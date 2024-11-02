@@ -1,0 +1,23 @@
+.Preview {
+  width: 375px;
+  height: 680px;
+  border-radius: var(--sizing-x5);
+  background-color: var(--color-shades-300);
+  margin: 0 auto 0;
+  transform: translateY(calc(50vh - 340px));
+
+  iframe {
+    border: 1px solid var(--color-shades-300);
+    border-radius: var(--sizing-x5);
+  }
+}
+
+body.dark {
+  .Preview {
+    background-color: var(--color-shades-900);
+
+    iframe {
+      border: 1px solid var(--color-shades-700);
+    }
+  }
+}

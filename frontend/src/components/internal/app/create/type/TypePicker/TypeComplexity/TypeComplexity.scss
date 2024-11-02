@@ -1,0 +1,55 @@
+.TypeComplexity {
+  background-color: var(--color-shades-700);
+  width: calc(100vw - 600px);
+  height: 100%;
+  position: relative;
+  overflow-x: scroll;
+  .Picker-Container {
+    height: 100%;
+    width: 100%;
+
+    position: relative;
+    display: flex;
+    flex-wrap: nowrap;
+    .TypeComplexity-Item-Container {
+      overflow: hidden;
+      min-width: 25vw;
+      padding: var(--sizing-x10);
+      position: relative;
+      cursor: pointer;
+      .TypeComplexity-SelectedBadge {
+        position: absolute;
+        top: var(--sizing-x2);
+        left: var(--sizing-x2);
+        padding: var(--sizing-x2) var(--sizing-x4);
+        text-transform: uppercase;
+        font-size: var(--font-size-p-xs);
+        line-height: var(--line-height-p-xs);
+        background-color: var(--color-black);
+        color: var(--color-white);
+        border-radius: var(--sizing-x4);
+      }
+      &:hover {
+        background-color: var(--color-shades-900);
+        .TypeComplexity-Item {
+          color: var(--color-shades-100);
+        }
+      }
+      &.--selected {
+        cursor: default;
+        background-color: var(--color-shades-100);
+        .TypeComplexity-Item {
+          color: var(--color-shades-900);
+        }
+      }
+      .TypeComplexity-Item {
+        margin-bottom: var(--sizing-x4);
+        color: var(--color-shades-400);
+        transition: font-size 0.5s ease-in-out;
+      }
+    }
+  }
+}
+
+body.dark {
+}

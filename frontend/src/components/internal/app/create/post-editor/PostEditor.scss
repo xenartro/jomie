@@ -1,0 +1,20 @@
+.PostEditor {
+  .PostEditorContent {
+    text-align: center;
+    height: calc(100vh - var(--sizing-x20));
+    display: flex;
+    justify-content: center;
+  }
+  .BottomContent {
+    position: absolute;
+    bottom: var(--sizing-x10);
+    left: var(--sizing-x10);
+  }
+}
+
+body.dark {
+  .PostEditor {
+    .PostEditorContent {
+    }
+  }
+}

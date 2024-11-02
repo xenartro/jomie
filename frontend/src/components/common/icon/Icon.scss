@@ -1,0 +1,14 @@
+.Icon {
+  display: inline-block;
+  position: relative;
+  width: var(--sizing-x8);
+  height: var(--sizing-x8);
+  svg {
+    path {
+      fill: var(--text-color);
+    }
+  }
+}
+
+body.dark {
+}

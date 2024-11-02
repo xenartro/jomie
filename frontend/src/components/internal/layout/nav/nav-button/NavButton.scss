@@ -1,0 +1,274 @@
+.NavButton__Container {
+  display: inline-block;
+  position: relative;
+  &:hover {
+    .NavButton__Label {
+      opacity: 1;
+      left: 60%;
+      z-index: 10;
+    }
+  }
+  .NavButton__Publish-Star {
+    position: absolute;
+    top: calc(0px - var(--sizing-x4));
+    right: calc(0px + var(--sizing-x5));
+    pointer-events: none;
+
+    color: var(--color-publish-100);
+    span {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 2;
+      font-size: var(--font-size);
+      width: var(--sizing-x8);
+      height: var(--sizing-x8);
+      line-height: var(--sizing-x8);
+      text-align: center;
+    }
+    svg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 0;
+      path {
+        fill: var(--color-publish-700);
+      }
+    }
+  }
+  .NavButton__Label {
+    position: absolute;
+    background-color: var(--text-color);
+    color: var(--background-color);
+    top: 60%;
+    left: 70%;
+    pointer-events: none;
+    opacity: 0;
+    transition: var(--transition-fast-in-out);
+    padding: var(--sizing-x) var(--sizing-x4);
+    border-radius: var(--sizing-x5);
+  }
+  &.--right {
+    .NavButton__Label {
+      left: auto;
+      right: 70%;
+    }
+    &:hover {
+      .NavButton__Label {
+        opacity: 1;
+        right: 60%;
+        z-index: 10;
+      }
+    }
+  }
+}
+
+.NavButton {
+  background-color: var(--background-color);
+  line-height: calc(var(--sizing-x8) - 4px);
+  height: var(--sizing-x8);
+  font-size: 0;
+  color: var(--text-color);
+  border-radius: var(--sizing-x5);
+  padding: 0 var(--sizing-x2);
+  border: 2px solid var(--background-color);
+  box-sizing: border-box;
+  position: relative;
+  margin: 0 var(--sizing-x);
+  overflow: hidden;
+  cursor: pointer;
+  &:disabled {
+    pointer-events: none;
+  }
+  .Icon {
+    top: -2px;
+  }
+  &:hover {
+    border-color: var(--color-brand-800);
+  }
+  &.--content {
+    background-color: var(--color-content-500);
+    border: 2px solid var(--color-content-500);
+    color: var(--color-content-900);
+    .Icon {
+      svg {
+        path {
+          fill: var(--color-content-900);
+        }
+      }
+    }
+    &:hover {
+      border-color: var(--color-content-900);
+    }
+    &.--sub-nav {
+      color: var(--color-content-100);
+      .Icon {
+        svg {
+          path {
+            fill: var(--color-content-100);
+          }
+        }
+      }
+      &:hover {
+        border-color: var(--color-content-100);
+      }
+
+      &.--active {
+        // We will be using the .active state from the partent anchor instead
+        background-color: var(--color-content-700);
+        border-color: var(--color-content-700);
+        &:hover {
+          border-color: var(--color-content-700);
+        }
+      }
+    }
+  }
+  &.--visuals {
+    background-color: var(--color-visuals-500);
+    border: 2px solid var(--color-visuals-500);
+    color: var(--color-visuals-900);
+    .Icon {
+      svg {
+        path {
+          fill: var(--color-visuals-900);
+        }
+      }
+    }
+    &:hover {
+      border-color: var(--color-visuals-900);
+    }
+    &.--sub-nav {
+      color: var(--color-visuals-100);
+      .Icon {
+        svg {
+          path {
+            fill: var(--color-visuals-100);
+          }
+        }
+      }
+      &:hover {
+        border-color: var(--color-visuals-100);
+      }
+
+      &.--active {
+        // We will be using the .active state from the partent anchor instead
+        background-color: var(--color-visuals-700);
+        border-color: var(--color-visuals-700);
+        &:hover {
+          border-color: var(--color-visuals-700);
+        }
+      }
+    }
+  }
+  &.--publish {
+    background-color: var(--color-publish-500);
+    border: 2px solid var(--color-publish-500);
+    color: var(--color-publish-900);
+    .Icon {
+      svg {
+        path {
+          fill: var(--color-publish-900);
+        }
+      }
+    }
+    &:hover {
+      border-color: var(--color-publish-900);
+    }
+    &:disabled {
+      background-color: var(--color-publish-100);
+      border: 2px solid var(--color-publish-100);
+      .Icon {
+        opacity: 0.3;
+      }
+    }
+  }
+  &.--settings {
+    background-color: var(--color-settings-500);
+    border: 2px solid var(--color-settings-500);
+    color: var(--color-settings-900);
+    .Icon {
+      svg {
+        path {
+          fill: var(--color-settings-900);
+        }
+      }
+    }
+    &:hover {
+      border-color: var(--color-settings-900);
+    }
+  }
+}
+
+.active {
+  .NavButton {
+    &.--settings {
+      background-color: var(--color-settings-100);
+      border-color: var(--color-settings-700);
+      &:hover {
+        border-color: var(--color-settings-700);
+      }
+    }
+  }
+}
+
+.Nav--content {
+  .active {
+    .NavButton {
+      background-color: var(--color-content-700);
+      border-color: var(--color-content-700);
+      &:hover {
+        border-color: var(--color-content-700);
+      }
+    }
+  }
+}
+
+.Nav--visuals {
+  .active {
+    .NavButton {
+      background-color: var(--color-visuals-700);
+      border-color: var(--color-visuals-700);
+      &:hover {
+        border-color: var(--color-visuals-700);
+      }
+    }
+  }
+}
+
+.dark {
+  .NavButton:not(.--settings):not(.--publish):not(.--visuals):not(.--content) {
+    background-color: var(--color-shades-700);
+    border: 2px solid var(--color-shades-700);
+    &:hover {
+      border-color: var(--text-color);
+    }
+  }
+  .active {
+    .NavButton {
+      &.--settings {
+        background-color: var(--color-settings-500);
+        border-color: var(--color-settings-100);
+        &:hover {
+          border-color: var(--color-settings-100);
+        }
+      }
+    }
+  }
+}
+
+/* MOBILE */
+@media (max-width: 900px) {
+  .NavButton__Container {
+    .NavButton {
+      padding: 0;
+      margin: 0 var(--sizing-x) 0 0;
+      &.--publish {
+        margin-right: 0;
+      }
+    }
+    .NavButton__Label {
+      display: none !important;
+      opacity: 0;
+    }
+  }
+}

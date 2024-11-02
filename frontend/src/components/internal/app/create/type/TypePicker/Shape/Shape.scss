@@ -1,0 +1,67 @@
+.Shape {
+  background-color: var(--color-shades-700);
+  width: 100%;
+  height: 100%;
+  .Picker-Container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px;
+    height: 100%;
+    width: 100%;
+    padding: 1px;
+    .Shape-Item {
+      background-color: var(--color-shades-900);
+      border: none;
+      overflow: hidden;
+      font-size: 55vh;
+      line-height: 1;
+      color: var(--color-shades-700);
+      max-height: 50vh;
+      text-align: center;
+      font-weight: bold;
+      position: relative;
+      cursor: pointer;
+      transition: var(--transition-fast-in-out);
+
+      &.--sans-serif {
+        font-family: sans-serif;
+      }
+      &.--serif {
+        font-family: serif;
+      }
+      &.--monospace {
+        font-family: monospace;
+      }
+      &.--cursive {
+        font-family: cursive;
+      }
+
+      &:hover {
+        background-color: var(--color-white);
+        color: var(--color-black);
+        border-radius: 0;
+      }
+      &.--selected {
+        background-color: var(--color-white);
+        color: var(--color-black);
+        border-radius: 0;
+      }
+      .SelectedBadge {
+        position: absolute;
+        top: var(--sizing-x2);
+        left: var(--sizing-x2);
+        padding: var(--sizing-x2) var(--sizing-x4);
+        text-transform: uppercase;
+        font-size: var(--font-size-p-xs);
+        line-height: var(--line-height-p-xs);
+        background-color: var(--color-black);
+        color: var(--color-white);
+        border-radius: var(--sizing-x4);
+        font-family: var(--font-family);
+      }
+    }
+  }
+}
+
+body.dark {
+}

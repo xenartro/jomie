@@ -1,0 +1,76 @@
+.form__validated .form__feedback {
+  display: none;
+}
+
+.form__validated .form_input--touched:invalid + .form__feedback {
+  display: block;
+}
+
+.form--submitting {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.form--loading {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.form--error {
+}
+.form__help {
+  font-size: var(--font-size-p-xs);
+  line-height: var(--line-height-p-xs);
+  color: var(--text-color-light);
+  padding-top: var(--sizing-x);
+}
+
+.form-error__message {
+  display: none;
+}
+
+.form--error .form-error__message {
+  display: block;
+}
+
+.form__feedback {
+  font-size: var(--font-size-p-xs);
+  padding: var(--sizing-x) 0;
+  margin: 0;
+  color: var(--text-color-light);
+}
+
+.Form {
+  .Form__ErrorMessage:first-of-type {
+    margin-top: var(--sizing-x4);
+  }
+  .Form__ErrorMessage {
+    margin-bottom: var(--sizing-x2);
+    font-size: var(--font-size-p-s);
+    color: var(--error-color);
+    font-weight: bold;
+  }
+  .Form__Submit {
+    margin-top: var(--sizing-x4);
+  }
+  .Form__Submit {
+    visibility: hidden;
+  }
+  &.form--touched {
+    .Form__Submit {
+      visibility: visible;
+    }
+  }
+}
+
+/* MOBILE */
+@media (max-width: 900px) {
+  .Form {
+    .Form__Submit {
+      visibility: visible;
+    }
+  }
+  .FormContainer {
+    padding: 0 0 var(--sizing-x4) 0;
+  }
+}

@@ -1,0 +1,371 @@
+.Button {
+  background-color: var(--color-main);
+  line-height: calc(var(--sizing-x10) - 4px);
+  font-size: var(--font-size-p);
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-medium);
+
+  color: var(--text-color);
+  border-radius: var(--sizing-x5);
+  padding: 0 var(--sizing-x8);
+  border: 2px solid var(--color-main);
+  box-sizing: border-box;
+  position: relative;
+  cursor: pointer;
+  &:disabled {
+    background-color: var(--color-shades-200);
+    border-color: var(--color-shades-200);
+    color: var(--color-shades-500);
+    pointer-events: none;
+  }
+  &:hover {
+    border-color: var(--color-brand-800);
+  }
+  &:active {
+    border-color: var(--color-brand-800);
+    background-color: var(--color-brand-300);
+  }
+
+  //SIZES
+  &.small {
+    line-height: calc(var(--sizing-x8) - 4px);
+    padding: 0 var(--sizing-x4);
+    font-size: var(--font-size-p-s);
+  }
+  //STYLES
+  &.secondary {
+    background-color: var(--color-brand-800);
+    border-color: var(--color-brand-800);
+    color: var(--color-white);
+
+    &:hover {
+      border-color: var(--color-main);
+      color: var(--color-brand-400);
+      background-color: var(--color-brand-900);
+    }
+    &:active {
+      border-color: var(--color-main);
+      color: var(--color-brand-500);
+      background-color: var(--color-brand-800);
+    }
+  }
+
+  &.visuals {
+    background-color: var(--color-visuals-500);
+    border-color: var(--color-visuals-500);
+    color: var(--color-visuals-100);
+
+    &:hover {
+      background-color: var(--color-visuals-700);
+      border-color: var(--color-visuals-700);
+      color: var(--color-visuals-100);
+    }
+    &:active {
+      background-color: var(--color-visuals-900);
+      border-color: var(--color-visuals-700);
+      color: var(--color-visuals-500);
+    }
+  }
+
+  &.content {
+    background-color: var(--color-content-100);
+    border-color: var(--color-content-100);
+    color: var(--color-content-700);
+
+    &:hover {
+      background-color: var(--color-content-500);
+      border-color: var(--color-content-500);
+      color: var(--color-content-900);
+    }
+    &:active {
+      background-color: var(--color-content-900);
+      border-color: var(--color-content-700);
+      color: var(--color-content-500);
+    }
+  }
+
+  &.publish {
+    background-color: var(--color-publish-500);
+    border-color: var(--color-publish-500);
+    color: var(--color-publish-900);
+
+    &:hover {
+      background-color: var(--color-publish-500);
+      border-color: var(--color-publish-700);
+      color: var(--color-publish-900);
+    }
+    &:active {
+      background-color: var(--color-publish-500);
+      border-color: var(--color-publish-700);
+      color: var(--color-publish-700);
+    }
+  }
+
+  &.ghost {
+    background-color: transparent;
+    border-color: var(--color-main);
+    color: var(--color-main);
+
+    &:hover {
+      background-color: transparent;
+      border-color: var(--color-brand-800);
+      color: var(--color-brand-800);
+    }
+    &:active {
+      background-color: transparent;
+      border-color: var(--color-brand-600);
+      color: var(--color-brand-600);
+    }
+    &.danger {
+      border-color: var(--color-publish-700);
+      color: var(--color-publish-700);
+
+      &:hover {
+        border-color: var(--color-publish-900);
+        color: var(--color-publish-900);
+        background-color: var(--color-publish-500);
+      }
+      &:active {
+        border-color: var(--color-publish-700);
+        color: var(--color-publish-700);
+        background-color: var(--color-publish-500);
+      }
+    }
+  }
+  &.link {
+    border: none;
+    background-color: transparent;
+    text-decoration: underline;
+    &:hover {
+      color: var(--link-color);
+    }
+  }
+  //ICONS
+  &.withIcon {
+    padding: 0 var(--sizing-x8) 0 calc(var(--sizing-x4) + var(--sizing-x8));
+    &.visuals {
+      .Icon svg path {
+        fill: var(--color-visuals-100);
+      }
+      &:active {
+        .Icon svg path {
+          fill: var(--color-visuals-500);
+        }
+      }
+    }
+
+    &.content {
+      .Icon svg path {
+        fill: var(--color-content-700);
+      }
+      &:hover {
+        .Icon svg path {
+          fill: var(--color-content-900);
+        }
+      }
+      &:active {
+        .Icon svg path {
+          fill: var(--color-content-500);
+        }
+      }
+    }
+    &.small {
+      padding: 0 var(--sizing-x4) 0 calc(var(--sizing-x2) + var(--sizing-x8));
+      .Icon {
+        top: calc(0px - var(--sizing-x-half));
+        left: calc(var(--sizing-x2) - 1px);
+      }
+      &.iconOnly {
+        height: var(--sizing-x8);
+        width: var(--sizing-x8);
+        padding: 0;
+        vertical-align: top;
+        .Icon {
+          top: 0;
+          left: 0;
+        }
+      }
+    }
+    &.iconRight {
+      padding: 0 calc(var(--sizing-x4) + var(--sizing-x8)) 0 var(--sizing-x8);
+
+      .Icon {
+        left: auto;
+        right: var(--sizing-x4);
+      }
+      &.small {
+        padding: 0 calc(var(--sizing-x2) + var(--sizing-x8)) 0 var(--sizing-x4);
+        .Icon {
+          left: auto;
+          right: var(--sizing-x2);
+        }
+      }
+    }
+
+    &.iconOnly {
+      height: var(--sizing-x10);
+      width: var(--sizing-x10);
+      padding: 0;
+      vertical-align: top;
+      border: 0;
+      .Icon {
+        left: var(--sizing-x);
+        top: var(--sizing-x);
+      }
+    }
+
+    .Icon {
+      position: absolute;
+      top: var(--sizing-x-half);
+      left: var(--sizing-x3);
+      svg {
+        path {
+          fill: var(--text-color);
+        }
+      }
+    }
+    &.secondary {
+      .Icon svg path {
+        fill: var(--background-color);
+      }
+      &:hover {
+        .Icon svg path {
+          fill: var(--color-brand-400);
+        }
+      }
+      &:active {
+        .Icon svg path {
+          fill: var(--color-main);
+        }
+      }
+    }
+    &.ghost {
+      .Icon svg path {
+        fill: var(--color-main);
+      }
+      &:hover {
+        .Icon svg path {
+          fill: var(--color-brand-800);
+        }
+      }
+      &:active {
+        .Icon svg path {
+          fill: var(--color-brand-600);
+        }
+      }
+    }
+  }
+  & + .Button {
+    margin-left: var(--sizing-x);
+  }
+}
+
+form:invalid button[type="submit"] {
+  background-color: var(--color-shades-200);
+  border-color: var(--color-shades-200);
+  color: var(--color-shades-500);
+  pointer-events: none;
+}
+
+body.dark {
+  form:invalid button[type="submit"] {
+    background-color: var(--color-shades-900);
+    border-color: var(--color-shades-700);
+    color: var(--color-shades-700);
+    pointer-events: none;
+  }
+  .Button {
+    color: var(--background-color);
+    &:disabled {
+      background-color: var(--color-shades-900);
+      border-color: var(--color-shades-700);
+      color: var(--color-shades-700);
+      pointer-events: none;
+    }
+    &.link {
+      color: var(--color-main);
+    }
+    .Icon svg path {
+      fill: var(--background-color);
+    }
+    &.visuals {
+      .Icon svg path {
+        fill: var(--color-visuals-900);
+      }
+      &:hover {
+        .Icon svg path {
+          fill: var(--color-visuals-100);
+        }
+      }
+      &:active {
+        .Icon svg path {
+          fill: var(--color-visuals-500);
+        }
+      }
+    }
+
+    &.content {
+      .Icon svg path {
+        fill: var(--color-content-700);
+      }
+      &:hover {
+        .Icon svg path {
+          fill: var(--color-content-900);
+        }
+      }
+      &:active {
+        .Icon svg path {
+          fill: var(--color-content-500);
+        }
+      }
+    }
+    //STYLES
+    &.secondary {
+      color: var(--text-color);
+      .Icon svg path {
+        fill: var(--text-color);
+      }
+    }
+    &.ghost {
+      color: var(--link-color);
+      background-color: var(--background-color);
+      &:hover {
+        background-color: transparent;
+        border-color: var(--color-brand-200);
+        color: var(--color-brand-200);
+      }
+      &:active {
+        background-color: transparent;
+        border-color: var(--color-brand-400);
+        color: var(--color-brand-400);
+      }
+      &.withIcon {
+        &:hover {
+          .Icon svg path {
+            fill: var(--color-brand-200);
+          }
+        }
+        &:active {
+          .Icon svg path {
+            fill: var(--color-brand-400);
+          }
+        }
+      }
+      &.danger {
+        border-color: var(--color-publish-500);
+        color: var(--color-publish-500);
+
+        &:hover {
+          border-color: var(--color-publish-500);
+          color: var(--color-publish-900);
+          background-color: var(--color-publish-500);
+        }
+        &:active {
+          border-color: var(--color-publish-700);
+          color: var(--color-publish-700);
+          background-color: var(--color-publish-500);
+        }
+      }
+    }
+  }
+}

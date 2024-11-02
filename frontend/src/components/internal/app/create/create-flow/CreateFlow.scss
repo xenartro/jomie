@@ -1,0 +1,16 @@
+.CreateFlow {
+  .CreateFlowPanel {
+  }
+  .CreateFlowSelector {
+    background-color: var(--color-shades-100) !important;
+  }
+}
+
+body.dark {
+  .CreateFlow {
+    .CreateFlowPanel {
+    }
+    .CreateFlowSelector {
+    }
+  }
+}

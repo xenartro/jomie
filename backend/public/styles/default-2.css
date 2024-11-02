@@ -1,0 +1,311 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: var(--font-body-primary);
+    font-size: var(--font-body-primary-siz);
+    font-weight: var(--font-body-font-weight);
+    background-color: var(--color-primary-0);
+    color: var(--color-text);
+}
+h1 {
+    font-family: var(--font-h1);
+    font-size: var(--font-h1-size);
+    font-weight: var(--font-h1-font-weigh);
+    line-height: var(--font-h1-line-height);
+}
+h1 {
+    font-family: var(--font-h2);
+    font-size: var(--font-h2-size);
+    font-weight: var(--font-h2-font-weigh);
+    line-height: var(--font-h2-line-height);
+}
+.wrapper {
+    max-width: 100vw;
+    overflow-x: hidden;
+}
+.section-title {
+    font-size: 3rem;
+    text-align: center;
+    margin-bottom: 50px;
+    position: relative;
+    display: inline-block;
+    color: #111;
+}
+.section-title:after {
+    content: '';
+    position: absolute;
+    width: 50%;
+    height: 2px;
+    background-color: var(--color-tertiary-500);
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: width 0.3s;
+}
+.section-title:hover:after {
+    width: 100%;
+}
+
+/* Header (Home) */
+.home-section {
+    font-family: var(--font-body-primary);
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    position: relative;
+    background: linear-gradient(120deg, var(--color-primary-500), var(--color-secondary-200));
+}
+.bio-wrapper {
+    text-align: left;
+    max-width: 600px;
+}
+.bio-title {
+    font-size: 4rem;
+    color: var(--color-primary-0);
+    line-height: 1.2;
+}
+.bio-title span {
+    color: var(--color-secondary-200);
+}
+.bio-text {
+    font-size: 1.5rem;
+    color: var(--color-primary-0);
+}
+.bio-paragraph {
+    font-size: 1.25rem;
+    color: var(--color-primary-100);
+}
+.hero-photo img {
+    width: 450px;
+    border-radius: 50%;
+    border: 8px solid var(--color-primary-0);
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.15);
+    transition: transform 0.4s ease;
+}
+.hero-photo img:hover {
+    transform: scale(1.05);
+}
+.scroll-down {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #fff;
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+    animation: bounce 2s infinite;
+    text-decoration: none;
+}
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(10px); }
+}
+
+/* Photos Section */
+.photos-section {
+    background-color: #f9f9f9;
+    padding: 100px 50px;
+}
+.photos-content {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+.photos-content.photos-1 {
+    grid-template-columns: repeat(1, 1fr);
+}
+.photos-content.photos-2 {
+    grid-template-columns: repeat(2, 1fr);
+}
+.photos-content.photos-3 {
+    grid-template-columns: repeat(3, 1fr);
+}
+.photos-content.photos-4 {
+    grid-template-columns: repeat(2, 1fr);
+}
+.photos-content.photos-5 {
+    grid-template-columns: repeat(3, 1fr);
+}
+.photos-content.photos-6 {
+    grid-template-columns: repeat(3, 1fr);
+}
+.photo {
+    background-size: cover;
+    background-position: center;
+    border-radius: 20px;
+    transition: transform 0.4s ease-in-out;
+}
+.photo:hover {
+    transform: scale(1.1);
+}
+
+/* Links Section */
+.links-section {
+    background-color: var(--color-secondary-400);
+    color: var(--color-text);
+    padding: 80px 50px;
+}
+.links-wrapper {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+.link-item {
+    display: flex;
+    align-items: center;
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.5rem;
+    transition: transform 0.3s ease, color 0.3s ease;
+    a {
+        color: #fff;
+    }
+    p {
+        margin-left: 1em;
+    }
+}
+.link-item img {
+    width: 30px;
+    margin-right: 15px;
+}
+.social-link-item {
+    display: flex;
+    align-items: center;
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.5rem;
+    transition: transform 0.3s ease, color 0.3s ease;
+    a {
+        color: #fff;
+    }
+}
+.social-link-item svg {
+    width: 30px;
+    margin-right: 15px;
+    fill: #fff;
+}
+.link-item:hover, .social-link-item:hover  {
+    transform: translateY(-10px);
+    color: var(--color-tertiary-500);
+}
+
+/* Blog/Posts Section */
+.posts-section {
+    padding: 80px 50px;
+}
+.post-list {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+.post {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+}
+.post:hover {
+    box-shadow: 0px 8px 30px rgba(0, 0, 0, 0.15);
+}
+.post-title {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    color: var(--color-text);
+}
+.post-item a {
+    color: var(--color-primary-500);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+.post-item a:hover {
+    color: var(--color-text);
+}
+
+/* Custom Cursor */
+.custom-cursor {
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    background-color: var(--color-primary-500);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 10000;
+    transform: translate(-50%, -50%);
+    transition: width 0.2s, height 0.2s;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 1200px) {
+    .bio-title {
+        font-size: 3.5rem;
+    }
+    .bio-text {
+        font-size: 1.3rem;
+    }
+    .hero-photo img {
+        width: 350px;
+    }
+}
+
+@media (max-width: 992px) {
+    .home-section {
+        flex-direction: column;
+        text-align: center;
+    }
+    .bio-wrapper {
+        max-width: 80%;
+    }
+    .hero-photo img {
+        width: 300px;
+        margin-top: 20px;
+    }
+    .scroll-down {
+        bottom: 20px;
+    }
+    .photos-content {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .bio-title {
+        font-size: 3rem;
+    }
+    .bio-text {
+        font-size: 1.2rem;
+    }
+    .hero-photo img {
+        width: 250px;
+    }
+    .photos-content {
+        grid-template-columns: 1fr;
+    }
+    .post-title {
+        font-size: 1.8rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .bio-title {
+        font-size: 2.5rem;
+    }
+    .bio-text {
+        font-size: 1rem;
+    }
+    .hero-photo img {
+        width: 200px;
+    }
+    .links-wrapper {
+        flex-direction: column;
+    }
+    .link-item {
+        font-size: 1.2rem;
+    }
+}

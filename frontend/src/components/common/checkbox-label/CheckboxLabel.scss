@@ -1,0 +1,35 @@
+.CheckboxLabel {
+  max-width: 350px;
+  margin: var(--sizing-x2) 0;
+
+  .CheckboxLabel__Container {
+    padding: var(--sizing-x2) 0;
+    position: relative;
+    label {
+      line-height: var(--sizing-x5);
+      font-size: var(--font-size-p-s);
+      color: var(--text-color-light);
+      white-space: nowrap;
+
+      height: var(--sizing-x6);
+      margin-left: var(--sizing-x6);
+    }
+    input[type="checkbox"],
+    input[type="radio"] {
+      width: var(--sizing-x4);
+      border: none;
+      position: absolute;
+      left: 0;
+      top: var(--sizing-x2);
+      text-align: left;
+      height: var(--sizing-x4);
+      border-radius: var(--sizing-x2);
+      &:focus {
+        outline: 2px solid var(--color-main);
+      }
+    }
+  }
+}
+
+body.dark {
+}

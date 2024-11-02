@@ -1,0 +1,87 @@
+:root {
+    --speed: 1.5s;
+    --delay: .5s;
+    --delay-long: 1s;
+    --easing-out: cubic-bezier(0, 0.55, 0.45, 1);
+    --easing-in-out: cubic-bezier(0.85, 0, 0.15, 1);
+    
+}
+/*General Animations */
+.d1 {
+    transition-delay: var(--delay) !important;
+ }
+/*FLIP Animation*/
+/*Flip Divs*/
+.flip .animated.l1 {
+    transform: rotateY(120deg);
+    opacity: 0;
+    filter: grayscale(100%);
+}
+.flip-done .animated.l1{
+    transition: all var(--speed) var(--easing-out);
+    transform: rotateY(0deg);
+    opacity: 1;
+    filter: grayscale(0%);
+ }
+
+ .flip .animated.l1 img {
+    
+    transform: scale(.8);
+    filter: grayscale(100%);
+}
+.flip-done .animated.l1 img{
+    transition: all var(--speed) var(--easing-out) var(--delay-long);
+    transform: scale(1);
+    filter: grayscale(0%);
+ }
+
+ .flip .animated.l2 {
+    filter: brightness(4) contrast(0);
+    opacity: 0;
+    background-color: var(--color-primary-500);
+    
+}
+.flip-done .animated.l2{
+    transition: all var(--speed) var(--easing-out) var(--delay);
+    filter: brightness(1) contrast(1);
+    opacity: 1;
+ }
+
+/*FADE Animation*/
+/*FADE Divs*/
+.fade-in .animated.l1 {
+    
+    opacity: 0;
+    filter: grayscale(100%);
+}
+.fade-in-done .animated.l1{
+    transition: all var(--speed) var(--easing-out);
+    opacity: 1;
+    filter: grayscale(0%);
+ }
+
+ .fade-in .animated.l1 img {
+    
+    transform: scale(.8);
+    filter: grayscale(100%);
+}
+.fade-in-done .animated.l1 img{
+    transition: all var(--speed) var(--easing-in-out) var(--delay-long);
+    transform: scale(1);
+    filter: grayscale(0%);
+ }
+
+ .fade-in .animated.l2 {
+    
+    
+    filter: brightness(4) contrast(0);
+    opacity: 0;
+    background-color: var(--color-primary-500);
+    
+}
+.fade-in-done .animated.l2{
+    transition: all var(--speed) var(--easing-out) var(--delay);
+    
+    filter: brightness(1) contrast(1);
+    opacity: 1;
+ }

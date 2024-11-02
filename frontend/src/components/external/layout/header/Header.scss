@@ -1,0 +1,51 @@
+.Header {
+  position: fixed;
+  padding: var(--sizing-x10);
+  top: 0;
+  left: 0;
+  width: 100vw;
+  display: flex;
+  justify-content: space-between;
+  z-index: 1000;
+  pointer-events: none;
+  & > div {
+    pointer-events: all;
+    background-color: var(--color-shades-200);
+    padding: var(--sizing-x2) var(--sizing-x2);
+    border-radius: var(--sizing-x6);
+    height: var(--sizing-x12);
+  }
+  .Header__Logo {
+    padding: 0;
+  }
+
+  &.--logoOnly {
+    position: relative;
+    padding: 0 0 var(--sizing-x5);
+    width: auto;
+    .Header__Options {
+      display: none;
+    }
+  }
+
+  &.--centerLayout {
+    .Header__Options {
+      display: none;
+    }
+  }
+}
+
+body.dark {
+  .Header {
+    & > div {
+      background-color: var(--color-shades-700);
+    }
+  }
+}
+
+/* MOBILE */
+@media (max-width: 900px) {
+  .Header {
+    padding: var(--sizing-x2);
+  }
+}

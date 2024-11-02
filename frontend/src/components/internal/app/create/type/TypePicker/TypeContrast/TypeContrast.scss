@@ -1,0 +1,117 @@
+.TypeContrast {
+  background-color: var(--color-shades-700);
+  width: 100%;
+  height: 100%;
+  position: relative;
+  .Picker-Container {
+    margin: 0 auto;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    max-width: 33vw;
+    .TypeContrast-Item {
+      margin-bottom: var(--sizing-x4);
+      color: var(--color-shades-400);
+      transition: font-size 0.5s ease-in-out;
+    }
+  }
+  .AxisLegend {
+    position: absolute;
+    font-size: var(--font-size-p-xs);
+    line-height: var(--line-height-p-xs);
+    padding: var(--sizing-x4);
+    font-weight: var(--font-weight-bold);
+    text-transform: uppercase;
+    color: var(--color-shades-500);
+    &.--top-left {
+      top: 0;
+      left: 0;
+    }
+    &.--top-right {
+      top: 0;
+      right: 0;
+      text-align: right;
+    }
+    &.--bottom-left {
+      bottom: 0;
+      left: 0;
+    }
+    &.--bottom-right {
+      bottom: 0;
+      right: 0;
+      text-align: right;
+    }
+  }
+
+  .Point-Hover {
+    width: var(--sizing-x4);
+    height: var(--sizing-x4);
+    border-radius: var(--sizing-x2);
+    background-color: var(--color-shades-200);
+    position: absolute;
+    opacity: 0;
+    z-index: 10;
+    transition: opacity 0.5s ease-in-out;
+    .Point-Hover__Text {
+      position: absolute;
+      font-size: var(--font-size-p-xs);
+      line-height: var(--line-height-p-xs);
+      background-color: var(--color-white);
+      color: var(--color-black);
+      border-radius: var(--sizing-x4);
+      font-family: var(--font-family);
+      text-transform: uppercase;
+      width: calc(90px + var(--sizing-x4));
+      padding: var(--sizing-x2);
+      left: var(--sizing-x4);
+      top: calc(0px - var(--sizing-x10));
+      text-align: center;
+    }
+  }
+  .Point-Selected {
+    width: var(--sizing-x4);
+    height: var(--sizing-x4);
+    border-radius: var(--sizing-x2);
+    background-color: var(--color-shades-900);
+    position: absolute;
+  }
+
+  .Indicator-Hover {
+    position: absolute;
+    width: 100%;
+    display: inline-block;
+    border-bottom: 2px solid var(--color-shades-200);
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+  }
+  .Indicator-Weight-Hover {
+    position: absolute;
+    height: 100%;
+    display: inline-block;
+    border-left: 2px solid var(--color-shades-200);
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+  }
+  .Indicator-Selected {
+    position: absolute;
+    display: inline-block;
+    width: 100%;
+    border-bottom: 2px solid var(--color-shades-900);
+  }
+  .Indicator-Weight-Selected {
+    position: absolute;
+    display: inline-block;
+    height: 100%;
+    border-left: 2px solid var(--color-shades-900);
+  }
+  &:hover {
+    .Indicator-Hover,
+    .Indicator-Weight-Hover,
+    .Point-Hover {
+      opacity: 1;
+    }
+  }
+}
+
+body.dark {
+}

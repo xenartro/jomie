@@ -1,0 +1,76 @@
+.Home {
+  .Home__Hero {
+    min-height: 100vh;
+    padding-top: 20vh;
+    text-align: center;
+    p {
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 480px !important;
+    }
+  }
+  .Home__Content {
+    min-height: 100vh;
+    padding-top: 20vh;
+    border-radius: var(--sizing-x20);
+    background: radial-gradient(
+      250% 250% at 10% 10%,
+      var(--color-content-500) 0%,
+      var(--color-content-500) 30%,
+      var(--color-content-100) 50%
+    );
+  }
+  .Home__Visuals {
+    min-height: 100vh;
+    padding-top: 20vh;
+    border-radius: var(--sizing-x20);
+    background: radial-gradient(
+      250% 250% at 100% 100%,
+      var(--color-visuals-500) 0%,
+      var(--color-visuals-500) 30%,
+      var(--color-visuals-100) 50%
+    );
+  }
+  .Home__Jomies {
+    min-height: 100vh;
+    padding-top: 20vh;
+  }
+  .Home__Register {
+    min-height: 80vh;
+    padding-top: 20vh;
+    text-align: center;
+  }
+}
+
+body.dark {
+  .Home {
+    .Home__Hero {
+    }
+    .Home__Content {
+      background: radial-gradient(
+        500% 500% at 0% 0%,
+        var(--color-content-900) 20%,
+        var(--color-content-500) 40%
+      );
+    }
+    .Home__Visuals {
+      background: radial-gradient(
+        300% 300% at 100% 100%,
+        var(--color-visuals-900) 0%,
+        var(--color-visuals-900) 35%,
+        var(--color-visuals-500) 50%
+      );
+    }
+  }
+}
+
+/* MOBILE */
+@media (max-width: 900px) {
+  .Home {
+    .Home__Content,
+    .Home__Visuals {
+      padding-top: 0;
+      border-radius: var(--sizing-x5);
+    }
+  }
+}

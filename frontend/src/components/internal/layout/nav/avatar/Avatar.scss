@@ -1,0 +1,50 @@
+.Avatar__Container {
+  display: inline-block;
+  position: relative;
+  vertical-align: top;
+  &:hover {
+    .Avatar__Label {
+      opacity: 1;
+      right: 60%;
+      z-index: 10;
+    }
+  }
+  .Avatar__Label {
+    position: absolute;
+    background-color: var(--text-color);
+    color: var(--background-color);
+    top: 60%;
+    right: 70%;
+    pointer-events: none;
+    opacity: 0;
+    transition: var(--transition-fast-in-out);
+    padding: var(--sizing-x) var(--sizing-x4);
+    border-radius: var(--sizing-x5);
+  }
+}
+
+.Avatar {
+  font-size: 0;
+  height: var(--sizing-x8);
+  width: var(--sizing-x8);
+  border: 2px solid #fff;
+  border-radius: var(--sizing-x5);
+  vertical-align: top;
+  overflow: hidden;
+  margin: 0 var(--sizing-x);
+  img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.dark {
+}
+
+/* MOBILE */
+@media (max-width: 900px) {
+  .Avatar {
+    margin: 0;
+  }
+}

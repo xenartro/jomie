@@ -1,0 +1,58 @@
+import "./Logo.scss";
+import { FC } from "react";
+
+const Logo: FC = () => {
+  return (
+    <div className="Logo">
+      <svg
+        width="60"
+        height="60"
+        viewBox="0 0 60 60"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <g clipPath="url(#clip0_338_18)">
+          <rect
+            width="60"
+            height="60"
+            rx="20"
+            fill="url(#paint0_radial_338_18)"
+          />
+          <rect x="10" y="10" width="40" height="40" rx="12" fill="#272428" />
+          <rect x="17" y="21" width="8" height="8" rx="4" fill="#FAE8D1" />
+          <rect x="36" y="21" width="8" height="8" rx="4" fill="#CBDFF1" />
+          <path
+            d="M30 35C30 38.3137 27.3137 41 24 41V41C20.6863 41 18 38.3137 18 35L18 34L30 34L30 35Z"
+            fill="#9680F8"
+          />
+          <rect
+            x="29.5857"
+            y="23.7574"
+            width="8"
+            height="4"
+            transform="rotate(45 29.5857 23.7574)"
+            fill="#F15050"
+          />
+        </g>
+        <defs>
+          <radialGradient
+            id="paint0_radial_338_18"
+            cx="0"
+            cy="0"
+            r="1"
+            gradientUnits="userSpaceOnUse"
+            gradientTransform="translate(-37.5 -41.5) rotate(45) scale(127.279)"
+          >
+            <stop stopColor="#7361BE" />
+            <stop offset="1" stopColor="#E1DBF9" />
+          </radialGradient>
+          <clipPath id="clip0_338_18">
+            <rect width="60" height="60" fill="white" />
+          </clipPath>
+        </defs>
+      </svg>
+    </div>
+  );
+};
+
+export default Logo;

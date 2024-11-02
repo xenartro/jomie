@@ -1,0 +1,38 @@
+p {
+  font-size: var(--font-size-p);
+  line-height: var(--line-height-p);
+  max-width: 625px;
+  letter-spacing: var(--letter-spacing-p);
+  margin-top: 0;
+  margin-bottom: var(--line-height-p);
+}
+p.p.--s {
+  font-size: var(--font-size-p-s);
+  line-height: var(--line-height-p-s);
+  max-width: 500px;
+  letter-spacing: var(--letter-spacing-p-s);
+  color: var(--text-color-light);
+  margin-bottom: var(--line-height-p-s);
+  margin-top: 0;
+}
+p.p.--xs {
+  font-size: var(--font-size-p-xs);
+  line-height: var(--line-height-p-xs);
+  max-width: 375px;
+  letter-spacing: var(--letter-spacing-p-xs);
+  color: var(--text-color-light);
+  margin-bottom: var(--line-height-p-xs);
+  margin-top: 0;
+}
+p.p.--b {
+  font-size: var(--font-size-p-b);
+  line-height: var(--line-height-p-b);
+  max-width: 700px;
+  letter-spacing: var(--letter-spacing-p-b);
+  margin-bottom: var(--line-height-p-b);
+  margin-top: 0;
+}
+
+p.p.--only {
+  margin-bottom: var(--sizing-x2) !important;
+}

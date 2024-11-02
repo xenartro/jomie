@@ -1,0 +1,239 @@
+@import url("https://api.fontshare.com/v2/css?f[]=satoshi@1,2&display=swap");
+
+:root {
+  /* Colors */
+  --color-shades-0: #fafafa;
+  --color-shades-100: #f0f0f0;
+  --color-shades-200: #e7e6e6;
+  --color-shades-300: #cfccc9;
+  --color-shades-400: #c3bdb7;
+  --color-shades-500: #867f7e;
+  --color-shades-600: #6f6869;
+  --color-shades-700: #575154;
+  --color-shades-800: #474147;
+  --color-shades-900: #272428;
+
+  --color-brand-0: #f5f4fa;
+  --color-brand-100: #f0eefa;
+  --color-brand-200: #ebe8fa;
+  --color-brand-300: #e1dbf9;
+  --color-brand-400: #cdc3f9;
+  --color-brand-500: #9680f8;
+  --color-brand-600: #7361be;
+  --color-brand-700: #5b4c98;
+  --color-brand-800: #3e3368;
+  --color-brand-900: #2d244b;
+
+  --color-content-100: #f2ddd9;
+  --color-content-500: rgb(173, 145, 31);
+  --color-content-700: #76600a;
+  --color-content-900: #122621;
+
+  --color-visuals-100: #e1edd9;
+  --color-visuals-500: rgb(41, 150, 163);
+  --color-visuals-700: #24636b;
+  --color-visuals-900: #2c0b07;
+
+  --color-publish-100: #cbdff1;
+  --color-publish-500: #f15050;
+  --color-publish-700: #bd1205;
+  --color-publish-900: #1a203d;
+
+  --color-settings-100: #fae8d1;
+  --color-settings-500: #3b81ce;
+  --color-settings-700: #1462b8;
+  --color-settings-900: #191320;
+
+  /* Sizing */
+  --sizing-block: 5px;
+  --sizing-x-half: calc(var(--sizing-block) / 2);
+  --sizing-x: var(--sizing-block);
+  --sizing-x2: calc(var(--sizing-block) * 2);
+  --sizing-x3: calc(var(--sizing-block) * 3);
+  --sizing-x4: calc(var(--sizing-block) * 4);
+  --sizing-x5: calc(var(--sizing-block) * 5);
+  --sizing-x6: calc(var(--sizing-block) * 6);
+  --sizing-x8: calc(var(--sizing-block) * 8);
+  --sizing-x10: calc(var(--sizing-block) * 10);
+  --sizing-x12: calc(var(--sizing-block) * 12);
+  --sizing-x15: calc(var(--sizing-block) * 15);
+  --sizing-x20: calc(var(--sizing-block) * 20);
+
+  /* Type */
+  /* Font Family */
+  --font-family: "Satoshi", sans-serif;
+  /* Font Weight */
+  --font-weight-bold: 700;
+  --font-weight-medium: 500;
+  --font-weight-regular: 400;
+
+  /* Font Size */
+  /* Paragraphs */
+  --font-size-p: 18px;
+  --font-size-p-xs: 12px;
+  --font-size-p-s: 15px;
+  --font-size-p-b: 24px;
+  /* Headings */
+  --font-size-h-1: 91px;
+  --font-size-h-2: 69px;
+  --font-size-h-3: 40px;
+  --font-size-h-4: 31px;
+  --font-size-h-5: var(--font-size-p);
+  /* Letter Spacing */
+  /* Paragraphs */
+  --letter-spacing-p: -0.01em;
+  --letter-spacing-p-xs: 0em;
+  --letter-spacing-p-s: 0.02em;
+  --letter-spacing-p-b: -0.02em;
+  /* Headings */
+  --letter-spacing-h-1: -0.04em;
+  --letter-spacing-h-2: -0.03em;
+  --letter-spacing-h-3: -0.025em;
+  --letter-spacing-h-4: -0.02em;
+  --letter-spacing-h-5: -0.01em;
+
+  /* Line Height */
+  /* Paragraphs */
+  --line-height-p: var(--sizing-x6);
+  --line-height-p-xs: var(--sizing-x4);
+  --line-height-p-s: var(--sizing-x5);
+  --line-height-p-b: calc(var(--sizing-x6) + var(--sizing-x));
+  /* Headings */
+  --line-height-h-1: calc(var(--sizing-x10) + var(--sizing-x8));
+  --line-height-h-2: calc(var(--sizing-x10) + var(--sizing-x5));
+  --line-height-h-3: var(--sizing-x10);
+  --line-height-h-4: var(--sizing-x8);
+  --line-height-h-5: var(--sizing-x6);
+
+  /* Transitions */
+  --transition-in-out: all 0.5s ease-in-out;
+  --transition-fast-in-out: all 0.2s ease-in-out;
+
+  /* REFERENCES */
+  --color-black: var(--color-shades-900);
+  --color-white: var(--color-shades-0);
+  --color-main: var(--color-brand-500);
+  --color-visuals: var(--color-visuals-500);
+  --color-content: var(--color-content-500);
+  --color-publish: var(--color-publish-500);
+  --color-settings: var(--color-settings-500);
+
+  /*MEDIA QUERIES */
+  --tablet: 1200px;
+  --mobile: 900px;
+}
+
+body.light {
+  --background-color: var(--color-white);
+  --background-color-secondary: var(--color-shades-200);
+  --section-background: var(--color-shades-100);
+  --text-color: var(--color-black);
+  --text-color-light: var(--color-shades-700);
+  --link-color: var(--color-main);
+  --border-color: var(--color-shades-200);
+  --error-color: var(--color-publish-700);
+}
+
+body.dark {
+  --background-color: var(--color-black);
+  --background-color-secondary: var(--color-shades-800);
+  --section-background: var(--color-shades-900);
+  --text-color: var(--color-white);
+  --text-color-light: var(--color-shades-400);
+  --link-color: var(--color-main);
+  --border-color: var(--color-shades-800);
+  --error-color: var(--color-publish-500);
+}
+
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-medium);
+  font-feature-settings: "ss03", "ss04", "ss02";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  font-size: var(--font-size-p);
+  line-height: var(--font-line-height-p);
+  &.basics,
+  &.posts,
+  &.photos,
+  &.links,
+  &.font,
+  &.palette,
+  &.layout {
+    background-color: var(--section-background);
+  }
+}
+a {
+  color: var(--link-color);
+  & + a {
+    margin-left: var(--sizing-x);
+  }
+}
+input {
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-medium);
+}
+
+/* MOBILE */
+@media (max-width: 900px) {
+  body {
+    height: 100svh;
+    width: 100vw;
+    overflow-x: hidden;
+    overflow-y: scroll;
+  }
+  #root {
+    height: auto;
+    overflow-x: hidden;
+    overflow-y: scroll;
+  }
+  :root {
+    /* Font Size */
+    /* Paragraphs */
+    --font-size-p: 16px;
+    --font-size-p-xs: 12px;
+    --font-size-p-s: 14px;
+    --font-size-p-b: 20px;
+    /* Headings */
+    --font-size-h-1: 40px;
+    --font-size-h-2: 31px;
+    --font-size-h-3: 24px;
+    --font-size-h-4: 20px;
+    --font-size-h-5: var(--font-size-p);
+    /* Letter Spacing */
+    /* Paragraphs */
+    --letter-spacing-p: -0.01em;
+    --letter-spacing-p-xs: 0em;
+    --letter-spacing-p-s: 0.02em;
+    --letter-spacing-p-b: -0.02em;
+    /* Headings */
+    --letter-spacing-h-1: -0.04em;
+    --letter-spacing-h-2: -0.03em;
+    --letter-spacing-h-3: -0.025em;
+    --letter-spacing-h-4: -0.02em;
+    --letter-spacing-h-5: -0.01em;
+
+    /* Line Height */
+    /* Paragraphs */
+    --line-height-p: var(--sizing-x5);
+    --line-height-p-xs: var(--sizing-x3);
+    --line-height-p-s: var(--sizing-x4);
+    --line-height-p-b: var(--sizing-x6);
+    /* Headings */
+    --line-height-h-1: var(--sizing-x10);
+    --line-height-h-2: var(--sizing-x8);
+    --line-height-h-3: calc(var(--sizing-x6) + var(--sizing-x));
+    --line-height-h-4: calc(var(--sizing-x6) + var(--sizing-x));
+    --line-height-h-5: var(--sizing-x5);
+  }
+}
+
+@import "globals/layouts.scss";
+@import "globals/headings.scss";
+@import "globals/paragraphs.scss";

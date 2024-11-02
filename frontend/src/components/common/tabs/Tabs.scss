@@ -1,0 +1,29 @@
+.Tabs {
+  padding: var(--sizing-x2) 0;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  gap: var(--sizing-x2);
+  .Tab {
+    padding: var(--sizing-x2);
+    color: var(--color-black);
+    border: none;
+    font-size: inherit;
+    cursor: pointer;
+    background-color: transparent;
+    &:hover {
+      color: var(--color-main);
+    }
+    &.--selected {
+      border-bottom: 2px solid var(--color-black);
+    }
+  }
+}
+
+.dark .Tab {
+  color: var(--color-white);
+}
+
+.light .Tab {
+  color: var(--color-black);
+}

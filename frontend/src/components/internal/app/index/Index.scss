@@ -1,0 +1,248 @@
+.Home {
+  .Hero {
+    text-align: center;
+    padding: var(--sizing-x20) 0 calc(var(--sizing-x20) * 2);
+    p {
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+  .MainSections__Preview {
+    min-height: 100vh;
+    position: relative;
+    margin: 0 calc(0px - var(--sizing-x20));
+    background-color: var(--color-publish-500);
+    display: flex;
+    .MainSections__Preview__Preview {
+      transition: var(--transition-fast-in-out);
+      background: radial-gradient(
+        300% 300% at -10% -10%,
+        var(--color-publish-700) 0%,
+        var(--color-publish-500) 30%,
+        var(--color-publish-100) 50%,
+        var(--color-publish-100) 60%
+      );
+      width: 50vw;
+    }
+    .MainSections__Preview__Content {
+      padding: var(--sizing-x20);
+      color: var(--color-publish-100);
+      width: 50vw;
+      background-color: var(--color-publish-900);
+    }
+  }
+  .MainSections {
+    margin: 0 calc(0px - var(--sizing-x20));
+    display: flex;
+    position: relative;
+
+    .Content {
+      transition: var(--transition-fast-in-out);
+      width: 50%;
+      text-align: center;
+      background: radial-gradient(
+        300% 300% at 10% 10%,
+        var(--color-content-500) 0%,
+        var(--color-content-500) 30%,
+        var(--color-content-900) 50%
+      );
+      .SectionInfo {
+        color: var(--color-content-500);
+        &::before {
+          background-color: var(--color-content-900);
+          background: radial-gradient(
+            500% 200% at 50% 140%,
+            var(--color-content-500) 0%,
+            var(--color-content-900) 30%
+          );
+        }
+        .Options {
+          border-color: rgba(173, 145, 31, 0.3);
+          .Option {
+            border-color: rgba(173, 145, 31, 0.3);
+          }
+        }
+      }
+    }
+    .Visuals {
+      transition: var(--transition-fast-in-out);
+      width: 50%;
+      text-align: center;
+      background: radial-gradient(
+        300% 300% at 100% 100%,
+        var(--color-visuals-500) 0%,
+        var(--color-visuals-500) 30%,
+        var(--color-visuals-900) 50%
+      );
+      .SectionInfo {
+        color: var(--color-visuals-500);
+        &::before {
+          background-color: var(--color-visuals-900);
+          background: radial-gradient(
+            500% 200% at 50% -30%,
+            var(--color-visuals-500) 0%,
+            var(--color-visuals-900) 30%
+          );
+        }
+        .Options {
+          border-color: rgba(173, 145, 31, 0.3);
+          .Option {
+            border-color: rgba(41, 150, 163, 0.3);
+          }
+        }
+      }
+    }
+    & > div {
+      height: 600px;
+      position: relative;
+      p {
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .SectionInfo {
+        position: relative;
+        z-index: 0;
+        text-align: center;
+        width: 600px;
+        display: inline-block;
+        padding-top: var(--sizing-x20);
+        .Title {
+          position: relative;
+          z-index: 10;
+          h2 {
+            margin-bottom: 0;
+          }
+        }
+        .Options {
+          position: relative;
+          z-index: 10;
+          text-align: left;
+          width: 340px;
+          margin: 0 auto;
+          border-bottom: 1px solid;
+          .Option {
+            border-top: 1px solid;
+            padding: var(--sizing-x2);
+            display: flex;
+            justify-content: space-between;
+            height: var(--sizing-x12);
+            line-height: var(--sizing-x8);
+          }
+        }
+        &::before {
+          content: "";
+          position: absolute;
+          z-index: 0;
+          height: 600px;
+          width: 600px;
+          border-radius: 50%;
+          top: 0;
+          left: 0;
+        }
+      }
+    }
+  }
+  .SecondarySections {
+    padding: var(--sizing-x20) 0;
+  }
+}
+
+body.dark {
+  .Home {
+    .MainSections__Preview {
+      .MainSections__Preview__Preview {
+        background: radial-gradient(
+          300% 300% at -10% -10%,
+          var(--color-publish-700) 0%,
+          var(--color-publish-900) 40%
+        );
+      }
+    }
+    .MainSections {
+      .Content {
+        background: radial-gradient(
+          500% 500% at 0% 0%,
+          var(--color-content-900) 20%,
+          var(--color-content-500) 40%
+        );
+      }
+      .Visuals {
+        background: radial-gradient(
+          300% 300% at 100% 100%,
+          var(--color-visuals-900) 0%,
+          var(--color-visuals-900) 35%,
+          var(--color-visuals-500) 50%
+        );
+      }
+    }
+  }
+}
+
+/* TABLET */
+@media (max-width: 1200px) {
+  .Home {
+    .MainSections {
+      flex-direction: column;
+      margin: 0 calc(0px - var(--sizing-x10));
+      .Content,
+      .Visuals {
+        width: 100vw;
+      }
+    }
+    .MainSections__Preview {
+      flex-direction: column;
+      margin: 0 calc(0px - var(--sizing-x10));
+      text-align: center;
+      .MainSections__Preview__Preview,
+      .MainSections__Preview__Content {
+        width: 100vw;
+      }
+      .MainSections__Preview__Preview {
+        min-height: calc(680px + 80px);
+      }
+    }
+  }
+}
+
+/* MOBILE */
+@media (max-width: 900px) {
+  .Home {
+    .Hero {
+      padding: var(--sizing-x10) 0;
+    }
+    .MainSections {
+      margin: 0 calc(0px - var(--sizing-x3));
+      & > div {
+        height: auto;
+
+        .SectionInfo {
+          width: auto;
+          width: 100vw;
+          padding: var(--sizing-x10) var(--sizing-x3);
+          &::before {
+            height: 100%;
+            width: 100%;
+            border-radius: var(--sizing-x8);
+            top: 0;
+            left: 0;
+          }
+        }
+      }
+    }
+    .MainSections__Preview {
+      margin: 0 calc(0px - var(--sizing-x3));
+      height: auto;
+      min-height: auto;
+      .MainSections__Preview__Preview,
+      .MainSections__Preview__Content {
+      }
+      .MainSections__Preview__Preview {
+        display: none;
+      }
+    }
+    .SecondarySections {
+      padding: var(--sizing-x10) var(--sizing-x5);
+      text-align: center;
+    }
+  }
+}

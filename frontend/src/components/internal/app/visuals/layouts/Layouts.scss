@@ -1,0 +1,33 @@
+.Visuals__Layouts {
+  .Hero {
+    padding: var(--sizing-x10) 0;
+    text-align: center;
+
+    p {
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+  .Visuals__Layouts__Form {
+    padding: var(--sizing-x20) var(--sizing-x10) var(--sizing-x10);
+    border-radius: var(--sizing-x5);
+    background-color: var(--color-shades-0);
+    border: 1px solid var(--color-shades-300);
+    position: relative;
+    .Form__Submit {
+      position: absolute;
+      top: calc(0px - var(--sizing-x2));
+      right: var(--sizing-x2);
+    }
+  }
+}
+
+body.dark {
+  .Visuals__Layouts {
+    .Visuals__Layouts__Form {
+      background-color: var(--color-shades-900);
+      border: 1px solid var(--color-shades-700);
+    }
+  }
+}

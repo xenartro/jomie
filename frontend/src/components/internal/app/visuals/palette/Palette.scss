@@ -1,0 +1,89 @@
+.Visuals__Palette {
+  .Hero {
+    padding: var(--sizing-x10) 0;
+    text-align: center;
+
+    p {
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+  .Visuals__Palette__Form {
+    padding: var(--sizing-x20) var(--sizing-x10) var(--sizing-x10);
+    border-radius: var(--sizing-x5);
+    background-color: var(--color-shades-0);
+    border: 1px solid var(--color-shades-300);
+    position: relative;
+    .Form__Submit {
+      position: absolute;
+      top: calc(0px - var(--sizing-x2));
+      right: var(--sizing-x2);
+    }
+  }
+  .PalettesList {
+    .Palette__Item {
+      border: none;
+      cursor: pointer;
+      background-color: transparent;
+      padding-bottom: var(--sizing-x10);
+      overflow: hidden;
+      max-height: var(--sizing-x15);
+      display: flex;
+      padding: 0 var(--sizing-x5) 0 0;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      border-radius: var(--sizing-x8);
+      margin-bottom: var(--sizing-x);
+      &:hover {
+        background-color: var(--color-brand-100);
+      }
+      &.--selected {
+        background-color: var(--color-brand-200);
+      }
+
+      .Palette__Item__Body {
+        display: flex;
+        padding: var(--sizing-x2);
+        align-items: center;
+        .Palette__Item__Color {
+          height: var(--sizing-x6);
+          width: var(--sizing-x6);
+          border-radius: var(--sizing-x4);
+
+          margin-left: var(--sizing-x);
+        }
+      }
+      .Palette__Item__Tag {
+        font-size: var(--font-size-p-xs);
+        text-transform: uppercase;
+        font-weight: var(--font-weight-bold);
+        margin: 0 var(--sizing-x2);
+        span {
+          background-color: var(--color-brand-400);
+          color: var(--color-brand-700);
+          display: inline-block;
+          padding: var(--sizing-x);
+          border-radius: var(--sizing-x);
+        }
+      }
+    }
+  }
+}
+
+body.dark {
+  .Visuals__Palette {
+    .Visuals__Palette__Form {
+      background-color: var(--color-shades-900);
+      border: 1px solid var(--color-shades-700);
+    }
+  }
+  .PalettesList {
+    .Palette__Item {
+      &.--selected {
+        background-color: var(--color-brand-700);
+      }
+    }
+  }
+}

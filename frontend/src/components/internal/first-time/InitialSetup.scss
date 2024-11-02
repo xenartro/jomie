@@ -1,0 +1,18 @@
+.InitialSetup {
+  .StepContent {
+    padding: var(--sizing-x2) 0 var(--sizing-x10);
+  }
+  .StepSecondaryActions {
+    padding: var(--sizing-x4) 0 0;
+  }
+}
+
+/* MOBILE */
+@media (max-width: 900px) {
+  .InitialSetup {
+    .StepContent {
+    }
+    .StepSecondaryActions {
+    }
+  }
+}

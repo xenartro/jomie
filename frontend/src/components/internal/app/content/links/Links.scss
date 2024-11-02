@@ -1,0 +1,83 @@
+.Content__Links {
+  .Hero {
+    padding: var(--sizing-x10) 0;
+    text-align: center;
+
+    p {
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+  .SubNav {
+    text-align: center;
+  }
+  .Link__remove {
+    display: block;
+    font-size: 0.75em;
+    padding-bottom: 1em;
+    cursor: pointer;
+    text-decoration: underline;
+  }
+  .Content__Links__Form {
+    padding: var(--sizing-x20) var(--sizing-x10) var(--sizing-x10);
+    border-radius: var(--sizing-x5);
+    background-color: var(--color-shades-0);
+    border: 1px solid var(--color-shades-300);
+    position: relative;
+    .Form__Submit {
+      position: absolute;
+      top: calc(0px - var(--sizing-x2));
+      right: var(--sizing-x2);
+    }
+  }
+  .Content__Links__Form + .Content__Links__Form {
+    margin-top: var(--sizing-x5);
+  }
+  .LinkFormRow {
+    .LinkFormRow__Row {
+      border-bottom: 1px solid var(--color-shades-300);
+      padding: var(--sizing-x3) 0;
+      margin: 0 !important;
+      .LinkFormRow__Action {
+        padding-top: calc(var(--sizing-x5) + var(--sizing-x-half));
+      }
+    }
+    &:first-child {
+      .LinkFormRow__Row {
+        border-top: 0;
+      }
+    }
+    &:last-child {
+      .LinkFormRow__Row {
+      }
+    }
+  }
+}
+
+body.dark {
+  .Content__Links {
+    .Content__Links__Form {
+      background-color: var(--color-shades-900);
+      border: 1px solid var(--color-shades-700);
+    }
+  }
+  .LinkFormRow {
+    .LinkFormRow__Row {
+      border-top: 1px solid var(--color-shades-700);
+    }
+  }
+}
+
+/* MOBILE */
+@media (max-width: 900px) {
+  .Content__Links {
+    .Hero {
+      padding: var(--sizing-x5) 0;
+    }
+    .Content__Links__Form {
+      padding: var(--sizing-x20) var(--sizing-x3) 0;
+      margin: 0 calc(0px - var(--sizing-x3)) var(--sizing-x10);
+    }
+  }
+}

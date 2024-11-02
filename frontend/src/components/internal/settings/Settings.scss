@@ -1,0 +1,53 @@
+.Settings {
+  .SettingsNav {
+    ul {
+      list-style-type: none;
+      padding: var(--sizing-x5);
+      border-radius: var(--sizing-x5);
+      background-color: var(--color-shades-100);
+      margin: 0;
+
+      li {
+        font-weight: var(--font-weight-medium);
+        padding: var(--sizing-x2) 0;
+        border-radius: var(--sizing-x5);
+
+        a {
+          text-decoration: none;
+        }
+
+        a.active {
+          color: var(--color-brand-600);
+        }
+      }
+    }
+  }
+  .SettingsForm {
+    padding: var(--sizing-x10) var(--sizing-x10) var(--sizing-x10);
+    border-radius: var(--sizing-x5);
+    background-color: var(--color-shades-0);
+    border: 1px solid var(--color-shades-300);
+  }
+}
+
+body.dark {
+  .Settings {
+    .SettingsNav {
+      ul {
+        background-color: var(--color-shades-800);
+        li {
+          &:last-child {
+            border-bottom: none;
+          }
+          &.--active {
+            color: var(--color-brand-300);
+          }
+        }
+      }
+    }
+    .SettingsForm {
+      background-color: var(--color-shades-900);
+      border: 1px solid var(--color-shades-700);
+    }
+  }
+}

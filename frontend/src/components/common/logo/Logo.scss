@@ -1,0 +1,16 @@
+.Logo {
+  position: relative;
+  display: inline-block;
+  width: var(--sizing-x12);
+  height: var(--sizing-x12);
+
+  svg {
+  }
+}
+
+body.dark {
+  .Logo {
+    svg {
+    }
+  }
+}

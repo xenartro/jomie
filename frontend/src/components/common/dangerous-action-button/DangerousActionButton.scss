@@ -1,0 +1,9 @@
+.DangerousActionButton {
+  background-color: var(--background-color-secondary);
+  padding: var(--sizing-x4);
+  border-radius: var(--sizing-x2);
+  margin: var(--sizing-x2) 0;
+  .DangerousActionButton__Message {
+    padding-bottom: var(--sizing-x2) !important;
+  }
+}

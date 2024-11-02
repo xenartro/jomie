@@ -1,0 +1,66 @@
+.Toggle {
+  position: relative;
+  display: inline-block;
+  width: var(--sizing-x10);
+  height: var(--sizing-x5);
+  input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  .Toggle__Slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: transparent;
+    border: 2px solid var(--background-color);
+    transition: var(--transition-fast-in-out);
+    border-radius: var(--sizing-x5);
+    &:before {
+      position: absolute;
+      content: "";
+      height: calc(var(--sizing-x5) - 8px);
+      width: calc(var(--sizing-x5) - 8px);
+      border-radius: var(--sizing-x5);
+      left: 2px;
+      bottom: 2px;
+      background-color: var(--background-color);
+      transition: var(--transition-fast-in-out);
+    }
+  }
+
+  input:checked + .Toggle__Slider {
+    background-color: var(--background-color);
+  }
+
+  input:focus + .Toggle__Slider {
+  }
+
+  input:checked + .Toggle__Slider:before {
+    -webkit-transform: translateX(var(--sizing-x5));
+    -ms-transform: translateX(var(--sizing-x5));
+    transform: translateX(var(--sizing-x5));
+    background-color: var(--text-color);
+  }
+
+  &.--content {
+    --background-color: var(--color-content-100);
+    --text-color: var(--color-content-900);
+  }
+
+  &.--visuals {
+  }
+}
+
+.dark {
+  .Toggle {
+    &.--content {
+      --background-color: var(--color-content-900);
+      --text-color: var(--color-content-100);
+    }
+  }
+}

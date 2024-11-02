@@ -1,0 +1,79 @@
+.FieldLabel {
+  max-width: 100%;
+  margin-bottom: var(--sizing-x2);
+
+  .FieldLabel__Container {
+    label {
+      line-height: var(--sizing-x5);
+      font-size: var(--font-size-p-s);
+      color: var(--text-color);
+      white-space: nowrap;
+      font-weight: var(--font-weight-medium);
+    }
+    textarea {
+      font-family: var(--font-family);
+      font-weight: var(--font-weight-medium);
+    }
+    input[type="text"],
+    input[type="file"],
+    input[type="password"],
+    input[type="email"],
+    input[type="number"],
+    textarea {
+      width: 100%;
+      border: none;
+      background-color: var(--color-shades-200);
+      border: 2px solid var(--color-shades-200);
+      line-height: calc(var(--sizing-x8) - 4px);
+      font-size: var(--font-size-p-s);
+      color: var(--text-color);
+      border-radius: var(--sizing-x4);
+      padding: 0 var(--sizing-x4);
+      &:focus {
+        outline: 0;
+        background-color: var(--color-white);
+        border: 2px solid var(--color-main);
+      }
+    }
+    textarea {
+      line-height: var(--line-height-p);
+
+      max-width: 100%;
+      min-height: 120px;
+    }
+    // Password input with icon to reveal password
+    button {
+      width: auto;
+      border: none;
+      line-height: var(--sizing-x8);
+      font-size: var(--font-size-p-m);
+      background-color: transparent;
+    }
+    .FieldLabel__HelpText {
+      color: var(--text-color-light);
+      font-size: var(--font-size-p-xs);
+      padding: var(--sizing-x) 0;
+    }
+  }
+}
+
+body.dark {
+  .FieldLabel__Container {
+    label {
+    }
+    input[type="text"],
+    input[type="password"],
+    input[type="email"],
+    input[type="number"],
+    input[type="file"],
+    textarea {
+      background-color: var(--color-shades-800);
+      border: 2px solid var(--color-shades-800);
+      &:focus {
+        outline: 0;
+        background-color: var(--color-black);
+        border: 2px solid var(--color-main);
+      }
+    }
+  }
+}
