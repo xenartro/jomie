@@ -19,6 +19,7 @@ php artisan serve
 
 # frontend
 cd frontend
+copy .env.example .env
 yarn install
 yarn start
 ```
