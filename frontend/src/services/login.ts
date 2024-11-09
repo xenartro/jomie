@@ -32,6 +32,15 @@ export const login = async (data: LoginData) => {
   return response;
 };
 
+export const resetPasswordRequest = async (email: string) => {
+  const response = await api.post("/reset-password", { email });
+  if (response instanceof AxiosError) {
+    Bugsnag.notify(response);
+    throw response;
+  }
+  return response;
+};
+
 export const logout = async () => {
   await api.post("/logout");
   Cookies.remove("XSRF-TOKEN");
