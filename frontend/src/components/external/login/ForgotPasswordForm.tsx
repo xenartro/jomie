@@ -15,12 +15,9 @@ const ResetPasswordForm = ({ cancel }: { cancel(): void }) => {
   const { t } = useTranslation();
 
   const handleSubmit = async () => {
-    try {
-      await resetPasswordRequest(data.email.toString());
-      setSuccess(true);
-    } catch (e) {
-      return e;
-    }
+    const response = await resetPasswordRequest(data.email.toString());
+    setSuccess(true);
+    return response;
   };
 
   if (success) {
