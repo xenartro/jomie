@@ -29,5 +29,5 @@ jobs:
       - name: TypeScript check
         run: yarn tsc --noEmit
 
-      - name: TypeScript check
+      - name: Build
         run: yarn build
