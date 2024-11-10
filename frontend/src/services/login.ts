@@ -41,6 +41,21 @@ export const resetPasswordRequest = async (email: string) => {
   return response;
 };
 
+interface ResetPasswordData {
+  email: string;
+  password: string;
+  password_confirmation: string;
+  token: string;
+}
+export const resetPassword = async (data: ResetPasswordData) => {
+  const response = await api.post("/reset-password", data);
+  if (response instanceof AxiosError) {
+    Bugsnag.notify(response);
+    throw response;
+  }
+  return response;
+};
+
 export const logout = async () => {
   await api.post("/logout");
   Cookies.remove("XSRF-TOKEN");

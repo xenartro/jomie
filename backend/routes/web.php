@@ -54,7 +54,7 @@ Route::get('/login', function () {
     return file_get_contents(public_path('index.html'));
 })->name('login');
 
-Route::get('/reset-password/{token}', function ($token) {
+Route::get('/reset-password', function ($token) {
     return view('auth.reset-password', ['token' => $token]);
 })->middleware('guest')->name('password.reset');
 

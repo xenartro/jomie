@@ -1,5 +1,5 @@
+import ForgotPasswordForm from "../login/ForgotPasswordForm";
 import LoginForm from "../login/LoginForm";
-import ResetPasswordForm from "../login/ResetPasswordForm";
 import Button from "components/common/button/Button";
 import SideColumnLayout from "components/external/layout/SideColumnLayout";
 import Header from "components/external/layout/header/Header";
@@ -35,7 +35,7 @@ const Login = () => {
     <SideColumnLayout>
       <Header version="logoOnly" />
       <h4>{t(forgot ? "Request password reset" : "Welcome back.")}</h4>
-      {forgot ? <ResetPasswordForm cancel={handleRemember} /> : <LoginForm />}
+      {forgot ? <ForgotPasswordForm cancel={handleRemember} /> : <LoginForm />}
       <p className="p --s --mt">
         {forgot ? (
           <a href="/login" onClick={handleRemember}>

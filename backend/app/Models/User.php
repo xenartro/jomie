@@ -35,7 +35,8 @@ class User extends Authenticatable
         'logout',
         'stats',
         'homepage',
-        'reset-password'
+        'reset-password',
+        'forgot-password',
     ];
 
     /**
