@@ -23,7 +23,7 @@ jobs:
         run: yarn install
 
       - name: TypeScript check
-        run: npx tsc --noEmit
+        run: yarn tsc --noEmit
 
       - name: TypeScript check
         run: yarn build
