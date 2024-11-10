@@ -39,7 +39,7 @@ const Login = () => {
       <p className="p --s --mt">
         {forgot ? (
           <a href="/login" onClick={handleRemember}>
-            {t("I remember")}
+            {t("I remember my password")}
           </a>
         ) : (
           <a href="/login" onClick={handleForgot}>

@@ -32,6 +32,7 @@ const ResetPasswordForm = ({ cancel }: { cancel(): void }) => {
       </FieldLabel>
       <div className="Form__Submit">
         <Button type="submit">Reset my password</Button>
+        <Button type="button" variant="ghost" onClick={cancel}>Go back</Button>
       </div>
     </Form>
   );

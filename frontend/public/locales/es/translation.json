@@ -60,6 +60,10 @@
     "Forgot your password?": "¿Olvidaste tu contraseña?",
     "Request password reset": "Solicitar cambio de contraseña",
     "Reset my password": "Cambiar contraseña",
+    "I remember my password": "Ya recuerdo mi contraseña",
+    "We have emailed your password reset link": "Te hemos enviado un email para recuperar tu contraseña",
+    "We can't find a user with that email address": "No encontramos un usuario con esa dirección de email",
+
 
     "Welcome Jomie!": "¡Bienvenid@, Jomie!",
     "Content": "Contenido",

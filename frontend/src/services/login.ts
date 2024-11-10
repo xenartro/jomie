@@ -33,7 +33,7 @@ export const login = async (data: LoginData) => {
 };
 
 export const resetPasswordRequest = async (email: string) => {
-  const response = await api.post("/reset-password", { email });
+  const response = await api.post("/forgot-password", { email });
   if (response instanceof AxiosError) {
     Bugsnag.notify(response);
     throw response;
