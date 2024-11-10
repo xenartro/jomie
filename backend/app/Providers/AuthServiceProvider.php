@@ -4,6 +4,11 @@ namespace App\Providers;
 
 // use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+use Illuminate\Auth\Notifications\ResetPassword;
+
+ResetPassword::createUrlUsing(function ($user, string $token) {
+    return env('APP_URL') . '/reset-password?token=' . $token;
+});
 
 class AuthServiceProvider extends ServiceProvider
 {

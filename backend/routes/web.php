@@ -4,6 +4,7 @@ use App\Models\User;
 use App\Models\VisualSetting;
 use App\Services\Content;
 use App\Services\Visual;
+use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 
@@ -52,6 +53,10 @@ Route::get('/login', function () {
     }
     return file_get_contents(public_path('index.html'));
 })->name('login');
+
+Route::get('/reset-password', function ($token) {
+    return view('auth.reset-password', ['token' => $token]);
+})->middleware('guest')->name('password.reset');
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('/app', function (Request $request) {
