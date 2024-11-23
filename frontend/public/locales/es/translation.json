@@ -11,6 +11,11 @@
     " is active": " activo",
     " is disabled": " deshabilitado",
     "Create an account": "Crear cuenta",
+
+    "Help and Contact": "",
+    "If you need help using Jomie, something is not working, you want to report abuse, or just want to say hi, please send us a message to ": "Si necesitas ayuda para utilizar Jomie, algo no funciona, quieres reportar abuso, o simplemente saludarnos, escríbenos a ",
+    "Jomie is also an Open Source project, so please feel free to report an issue or submit a pull request to our ": "Jomie también es un proyecto Open Source, por lo que puedes reportar un ticket o enviar una solicitud de cambios a nuestro ",
+    "GitHub repository": "repositoryio en GitHub",
     
     "Meet Jomie.": "Conoce Jomie",
     "Your place in the digital world.": "Tu lugar en el mundo digital.",
