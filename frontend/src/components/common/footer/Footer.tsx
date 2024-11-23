@@ -18,7 +18,13 @@ function Footer() {
         </div>
         <div className="Footer__Links">
           <Link to="/help-and-contact">{t("Contact us")}</Link>
-          <a href="https://github.com/xenartro/jomie/issues" target="_blank" rel="noopener noreferrer">{t("Feedback")}</a>
+          <a
+            href="https://github.com/xenartro/jomie/issues"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {t("Feedback")}
+          </a>
           <Link to="/terms">{t("Terms & Conditions")}</Link>
           <Link to="/privacy">{t("Privacy Policy")}</Link>
         </div>

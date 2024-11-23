@@ -56,9 +56,17 @@ const Terms = () => {
             )}
           </p>
           <ul>
-            <li>{t("Infringes upon third-party copyrights, trademarks, patents, or other intellectual property rights.")}</li>
+            <li>
+              {t(
+                "Infringes upon third-party copyrights, trademarks, patents, or other intellectual property rights."
+              )}
+            </li>
             <li>{t("Violates any applicable laws or regulations.")}</li>
-            <li>{t("Contains unauthorized or harmful material, such as viruses or malicious code.")}</li>
+            <li>
+              {t(
+                "Contains unauthorized or harmful material, such as viruses or malicious code."
+              )}
+            </li>
           </ul>
 
           <h5>{t("3. Privacy and Data Collection")}</h5>

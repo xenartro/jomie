@@ -31,7 +31,14 @@ const HelpAndContact = () => {
             {t(
               "Jomie is also an Open Source project, so please feel free to report an issue or submit a pull request to our "
             )}
-            <a href="https://github.com/xenartro/jomie" target="_blank" rel="noopener noreferrer">{t("GitHub repository")}</a>.
+            <a
+              href="https://github.com/xenartro/jomie"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {t("GitHub repository")}
+            </a>
+            .
           </p>
         </div>
       </div>

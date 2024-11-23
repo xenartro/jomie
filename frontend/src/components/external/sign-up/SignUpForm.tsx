@@ -98,7 +98,17 @@ const SignUpForm = () => {
         />
       </FieldLabel>
       <CheckboxLabel>
-        <label htmlFor="terms-field">{t("I read and accept the ")}<a href="/terms" target="_blank" rel="noopener noreferrer">{t("terms and conditions")}</a>{t(" and ")}<a href="/privacy" target="_blank" rel="noopener noreferrer">{t("privacy policy")}</a>.</label>
+        <label htmlFor="terms-field">
+          {t("I read and accept the ")}
+          <a href="/terms" target="_blank" rel="noopener noreferrer">
+            {t("terms and conditions")}
+          </a>
+          {t(" and ")}
+          <a href="/privacy" target="_blank" rel="noopener noreferrer">
+            {t("privacy policy")}
+          </a>
+          .
+        </label>
         <Input
           id="terms-field"
           name="terms_accepted"
