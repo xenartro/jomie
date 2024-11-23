@@ -22,7 +22,7 @@ const Privacy = () => {
           <br />
           <h3>{t("Privacy Policy")}</h3>
 
-          <p>{t("Last Updated: [Date]")}</p>
+          <p>{t("Last Updated: 23/11/2024")}</p>
           <p>
             {t(
               "Welcome to Jomie.io ('the Service,' 'we,' 'us,' or 'our'). This Privacy Policy outlines how we collect, use, disclose, and protect your personal information when you access or use our web application and services. By using the Service, you consent to the practices described in this Privacy Policy."
@@ -41,7 +41,7 @@ const Privacy = () => {
           </p>
           <p>
             {t(
-              "1.3. Usage Data: We collect information about how you use the Service, including your interactions with the platform, the pages you visit, and the features you use. This data helps us improve the performance and features of the Service."
+              "1.3. Usage Data: We don't collect information about how you use the Service, including your interactions with the platform, the pages you visit, and the features you use. This data helps us improve the performance and features of the Service."
             )}
           </p>
 
