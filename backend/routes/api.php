@@ -21,8 +21,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/homepage/featured', function () {
-    $featuredUser = User::join('user_preferences', 'users.id', '=', 'user_preferences.user_id')
-        ->where('feature_homepage', true)
+    $featuredUser = User::where('featured', true)
         ->inRandomOrder()
         ->first();
     return response($featuredUser ? $featuredUser->nickname : '');

@@ -169,16 +169,6 @@ class UserPreference extends Model
         $user->preferences->save();
     }
 
-    public static function setFeatureHomepage(User | null $user, int $feature)
-    {
-        if (!in_array($feature, [1, 0])) {
-            return;
-        }
-
-        $user->preferences->feature_homepage = (boolean)$feature;
-        $user->preferences->save();
-    }
-
     public static function updateInitialSetup(User | null $user, array $data)
     {
         if (!$user) {

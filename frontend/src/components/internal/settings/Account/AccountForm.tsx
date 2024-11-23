@@ -24,7 +24,6 @@ const AccountForm = () => {
     password: "",
     theme: user?.preferences.theme_name || "auto",
     lang: user?.preferences.lang || "",
-    feature_homepage: user?.preferences.feature_homepage ? 1 : 0,
   });
   const { t } = useTranslation();
 
@@ -43,7 +42,6 @@ const AccountForm = () => {
       password: data.password.toString(),
       theme: data.theme as ThemeOptions,
       lang: data.lang as "es" | "en" | "",
-      feature_homepage: data.feature_homepage ? 1 : 0,
     });
     refresh();
     setData({
@@ -135,20 +133,6 @@ const AccountForm = () => {
           value="en"
           checked={!data.lang || data.lang === "en"}
           onChange={handleInputChange.bind(null, data, setData)}
-        />
-      </CheckboxLabel>
-
-      <h5>{t("Feature in homepage")}</h5>
-      <CheckboxLabel
-        htmlFor="homepage-feature"
-        label="Display my site as featured in the home page"
-      >
-        <Input
-          id="homepage-feature"
-          name="feature_homepage"
-          type="checkbox"
-          checked={data.feature_homepage === 1}
-          onChange={handleCheckboxChange.bind(null, data, setData)}
         />
       </CheckboxLabel>
 
