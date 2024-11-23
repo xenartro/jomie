@@ -97,10 +97,8 @@ const SignUpForm = () => {
           feedback={t("Please create a password of at least 11 characters")}
         />
       </FieldLabel>
-      <CheckboxLabel
-        htmlFor="terms-field"
-        label="I read and accept the terms and conditions"
-      >
+      <CheckboxLabel>
+        <label htmlFor="terms-field">{t("I read and accept the ")}<a href="/terms" target="_blank" rel="noopener noreferrer">{t("terms and conditions")}</a>.</label>
         <Input
           id="terms-field"
           name="terms_accepted"
