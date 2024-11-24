@@ -6,11 +6,7 @@ import Form from "components/common/form/Form";
 import Input from "components/common/input/Input";
 import PasswordInput from "components/common/password-input/PasswordInput";
 import { useLoginState } from "components/internal/LoginStateContext";
-import {
-  DataType,
-  handleCheckboxChange,
-  handleInputChange,
-} from "helpers/forms";
+import { DataType, handleInputChange } from "helpers/forms";
 import { useState, useCallback, useLayoutEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { updateAccount } from "services/settings";
