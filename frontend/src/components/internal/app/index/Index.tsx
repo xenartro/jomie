@@ -15,13 +15,13 @@ const AppIndex = () => {
   const { t } = useTranslation();
   const { unpublishedChanges } = useAppContext();
   const { user } = useLoginState();
-  
+
   const handlePublish = useCallback(() => {
     publishContents().then(() => {
       window.location.reload();
     });
   }, []);
-  
+
   if (!user) {
     return null;
   }
@@ -51,7 +51,9 @@ const AppIndex = () => {
                     icon="arrow-right"
                     iconRight
                   >
-                    {user.meta.customizations.basics_updated ? 'Edit' : 'Start here'}
+                    {user.meta.customizations.basics_updated
+                      ? "Edit"
+                      : "Start here"}
                   </Button>
                 </Link>
               </div>
@@ -65,7 +67,9 @@ const AppIndex = () => {
                     icon="arrow-right"
                     iconRight
                   >
-                    {user.meta.customizations.links_updated ? 'Edit' : 'Add links'}
+                    {user.meta.customizations.links_updated
+                      ? "Edit"
+                      : "Add links"}
                   </Button>
                 </Link>
               </div>
@@ -78,7 +82,9 @@ const AppIndex = () => {
                     icon="arrow-right"
                     iconRight
                   >
-                    {user.meta.customizations.photos_updated ? 'Edit' : 'Upload photos'}
+                    {user.meta.customizations.photos_updated
+                      ? "Edit"
+                      : "Upload photos"}
                   </Button>
                 </Link>
               </div>
@@ -91,7 +97,9 @@ const AppIndex = () => {
                     icon="arrow-right"
                     iconRight
                   >
-                    {user.meta.customizations.blog_updated ? 'Edit' : 'Create post'}
+                    {user.meta.customizations.blog_updated
+                      ? "Edit"
+                      : "Create post"}
                   </Button>
                 </Link>
               </div>
