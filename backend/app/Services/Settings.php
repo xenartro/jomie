@@ -61,7 +61,6 @@ class Settings {
             'name'  => ['required', 'string', 'max:255'],
             'theme' => [Rule::in(['light', 'dark', 'auto'])],
             'lang' => [Rule::in(['es', 'en', ''])],
-            'feature_homepage' => [Rule::in([1, 0])],
         ];
 
         if (!empty($data['password'])) {
@@ -79,7 +78,6 @@ class Settings {
             $user->save();
             UserPreference::setTheme($user, $data['theme']);
             UserPreference::setLang($user, $data['lang']);
-            UserPreference::setFeatureHomepage($user, $data['feature_homepage']);
         });
     }
 }

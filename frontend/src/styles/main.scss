@@ -1,3 +1,4 @@
+@use "sass:meta";
 @import url("https://api.fontshare.com/v2/css?f[]=satoshi@1,2&display=swap");
 
 :root {
@@ -234,6 +235,6 @@ input {
   }
 }
 
-@import "globals/layouts.scss";
-@import "globals/headings.scss";
-@import "globals/paragraphs.scss";
+@include meta.load-css("globals/layouts.scss");
+@include meta.load-css("globals/headings.scss");
+@include meta.load-css("globals/paragraphs.scss");

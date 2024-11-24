@@ -22,10 +22,10 @@ const Privacy = () => {
           <br />
           <h3>{t("Privacy Policy")}</h3>
 
-          <p>{t("Last Updated: [Date]")}</p>
+          <p>{t("Last Updated: 23/11/2024")}</p>
           <p>
             {t(
-              "Welcome to Jomie.io ('the Service,' 'we,' 'us,' or 'our'). This Privacy Policy outlines how we collect, use, disclose, and protect your personal information when you access or use our web application and services. By using the Service, you consent to the practices described in this Privacy Policy."
+              `Welcome to Jomie.io ("the Service," "we," "us," or "our"). This Privacy Policy explains how we collect, use, disclose, and protect your personal information when you access or use our web application and services. By creating an account or using the Service, you acknowledge that you have read and understood this Privacy Policy.`
             )}
           </p>
           <h5>{t("1. Information We Collect")}</h5>
@@ -36,12 +36,12 @@ const Privacy = () => {
           </p>
           <p>
             {t(
-              "1.2. Content Information: When you use the Service to create a personal website, you may upload and share personal information, images, links, and text. This content is stored securely on our servers and is used to provide the Service according to your preferences."
+              "1.2. Content You Upload: When you use the Service to create a personal website, you may upload content such as personal information, images, links, and text. This content is stored securely and used to provide the features and functionality of the Service as you configure them."
             )}
           </p>
           <p>
             {t(
-              "1.3. Usage Data: We collect information about how you use the Service, including your interactions with the platform, the pages you visit, and the features you use. This data helps us improve the performance and features of the Service."
+              "1.3. Usage Data: If you provide feedback about the Service, we may use it to improve our features and performance. We do not collect or analyze your usage patterns, interactions, or other behavioral data."
             )}
           </p>
 
@@ -58,12 +58,7 @@ const Privacy = () => {
           </p>
           <p>
             {t(
-              "2.3. Improvement and Analysis: We may analyze usage patterns and user feedback to improve the Service, develop new features, and enhance user experience."
-            )}
-          </p>
-          <p>
-            {t(
-              "2.4. Legal and Security: We may use your information to comply with legal obligations, enforce our Terms and Conditions, and protect the security and integrity of the Service."
+              "2.3. Legal Compliance and Security: We may process your data as necessary to comply with legal obligations, enforce our Terms and Conditions, and protect the security and integrity of the Service."
             )}
           </p>
 
@@ -99,14 +94,14 @@ const Privacy = () => {
           </p>
           <p>
             {t(
-              "5.2. You have the right to access, correct, or delete the personal information we hold about you. Contact us at [contact email] for assistance."
+              "5.2. You have the right to access, correct, or delete the personal information we hold about you. Contact us at support@jomie.io for assistance."
             )}
           </p>
 
           <h5>{t("6. Children's Privacy")}</h5>
           <p>
             {t(
-              "6.1. Our Service is not intended for users under the age of 13. If we become aware that we have collected personal information from a child under 13 without parental consent, we will take steps to remove that information."
+              "6.1. Our Service is not intended for users under the age of 16. If we become aware that we have collected personal information from a child under 16 without parental consent, we will take steps to remove that information."
             )}
           </p>
 
@@ -117,7 +112,14 @@ const Privacy = () => {
             )}
           </p>
 
-          <h5>{t("8. Contact Us")}</h5>
+          <h5>{t("8. Data Retention")}</h5>
+          <p>
+            {t(
+              "8.1. We retain your personal data only for as long as necessary to provide the Service or comply with legal obligations. Upon account deletion or at your request, we will securely delete your data, unless retention is required for legal or security reasons."
+            )}
+          </p>
+
+          <h5>{t("9. Contact Us")}</h5>
           <p>
             {t(
               "8.1. If you have questions or concerns about this Privacy Policy, please "
@@ -127,7 +129,7 @@ const Privacy = () => {
 
           <p>
             {t(
-              "By using the Service, you acknowledge that you have read and understood this Privacy Policy and consent to the collection, use, and disclosure of your personal information as described herein."
+              "By using the Service, you acknowledge that you have read and understood this Privacy Policy. You also consent to the collection, use, and disclosure of your personal information as described herein, where such consent is required by applicable law."
             )}
           </p>
           <br />

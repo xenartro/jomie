@@ -1,4 +1,3 @@
-import Feedback from "components/common/Feedback";
 import FourZeroFour from "components/common/FourZeroFour";
 import HelpAndContact from "components/common/HelpAndContact";
 import Privacy from "components/common/Privacy";
@@ -50,7 +49,6 @@ const Router = () => {
       <Route path="/login" element={<Login />} />
       <Route path="/reset-password" element={<ResetPassword />} />
       <Route path="/help-and-contact" element={<HelpAndContact />} />
-      <Route path="/feedback" element={<Feedback />} />
       <Route path="/terms" element={<Terms />} />
       <Route path="/privacy" element={<Privacy />} />
       {!user && <Route path="/logout" element={<RedirectToHomePage />} />}
