@@ -22,7 +22,7 @@ const Terms = () => {
           <br />
           <h3>{t("Terms and Conditions")}</h3>
 
-          <p>{t("Last Updated: [Date]")}</p>
+          <p>{t("Last Updated: 23/11/2024")}</p>
           <p>
             {t(
               "Welcome to Jomie.io ('the Service,' 'we,' 'us,' or 'our'). By accessing or using our web application and services, you ('user,' 'you,' or 'your') agree to comply with and be bound by the following terms and conditions ('Terms'). Please read these Terms carefully before using the Service. If you do not agree with these Terms, you should not use the Service."
@@ -36,35 +36,48 @@ const Terms = () => {
           </p>
           <p>
             {t(
-              "1.2. You must be at least 13 years of age to create an account and use the Service. If you are under 13, you may use the Service only with the involvement and consent of a parent or guardian."
+              "1.2. You must be at least 16 years of age to create an account and use the Service. If you are under 16, you may use the Service only with the involvement and consent of a parent or guardian."
             )}
           </p>
           <p>
             {t(
-              "1.3. You are solely responsible for the content you publish on your personal website created through the Service. You agree not to upload, post, or transmit any content that is unlawful, harmful, abusive, defamatory, or otherwise objectionable."
+              "1.3. You are solely responsible for the content you publish on your personal website created through the Service. You agree not to upload, post, or transmit any content that is unlawful, harmful, abusive, defamatory, or otherwise objectionable. You may not use the Service to publish content that violates applicable laws, promotes hate speech, or contains malicious software."
             )}
           </p>
           <h5>{t("2. Content Ownership and Rights")}</h5>
           <p>
             {t(
-              "2.1. You retain ownership of all content you upload, post, or transmit through the Service. However, by using the Service, you grant us a worldwide, non-exclusive, royalty-free license to use, reproduce, adapt, modify, publish, translate, distribute, and display your content for the purpose of providing the Service."
+              "2.1. You retain full ownership of all content (text, images, links, or other materials) you upload, post, or transmit through the Service ('User Content'). By submitting User Content, you grant Jomie.io a worldwide, non-exclusive, royalty-free, revocable license to use, host, store, reproduce, and display your content, strictly for the purpose of operating, improving, and providing the Service. This license will end when you delete the User Content from the Service, except to the extent that such content has been shared with others who have not deleted it or where retention is required by law or for legitimate business purposes (e.g., backups)."
             )}
           </p>
           <p>
             {t(
-              "2.2. You may not use the Service to infringe upon any intellectual property rights or violate any copyrights, trademarks, or patents owned by third parties."
+              "2.2. You represent and warrant that you own or have obtained all necessary rights, licenses, and permissions to submit User Content through the Service. You agree not to upload, post, or share any content that:"
             )}
           </p>
+          <ul>
+            <li>
+              {t(
+                "Infringes upon third-party copyrights, trademarks, patents, or other intellectual property rights."
+              )}
+            </li>
+            <li>{t("Violates any applicable laws or regulations.")}</li>
+            <li>
+              {t(
+                "Contains unauthorized or harmful material, such as viruses or malicious code."
+              )}
+            </li>
+          </ul>
 
           <h5>{t("3. Privacy and Data Collection")}</h5>
           <p>
             {t(
-              "3.1. Your use of the Service is also governed by our Privacy Policy [insert link], which explains how we collect, use, and disclose your personal information."
+              "All personal data collected through the Service will be processed in compliance with the General Data Protection Regulation (GDPR) data protection law. Users have the right to access, rectify, delete, restrict, and object to the processing of their personal data."
             )}
           </p>
           <p>
             {t(
-              "3.2. We may collect certain usage information and analytics data to improve the performance and features of the Service."
+              "3.2. We do not collect certain usage information and analytics data to improve the performance and features of the Service."
             )}
           </p>
 
@@ -92,7 +105,7 @@ const Terms = () => {
           <h5>{t("7. Modifications to Terms and Service")}</h5>
           <p>
             {t(
-              "7.1. We reserve the right to modify, suspend, or discontinue the Service or these Terms at any time. We will provide notice of any material changes to these Terms."
+              "7.1. We will notify users of material changes to these Terms at least 30 days in advance through email or a prominent notice within the Service. Continued use of the Service after the updated Terms become effective constitutes acceptance."
             )}
           </p>
 

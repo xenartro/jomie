@@ -18,7 +18,6 @@ interface AccountData extends Pick<User, "name"> {
   password_confirmation?: string;
   theme: ThemeOptions;
   lang: "es" | "en" | "";
-  feature_homepage: number;
 }
 
 export async function updateAccount(data: AccountData) {

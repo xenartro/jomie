@@ -40,7 +40,6 @@ type UserPreferences = {
   links_name: string;
   posts_name: string;
   photos_name: string;
-  feature_homepage: boolean;
 };
 
 type CustomizationsType = {
@@ -79,7 +78,6 @@ class User {
     posts_name: "",
     photos_name: "",
     lang: "en",
-    feature_homepage: false,
   };
   meta: UserMeta;
 

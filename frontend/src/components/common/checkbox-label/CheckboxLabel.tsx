@@ -3,7 +3,7 @@ import { FC, ReactNode, LabelHTMLAttributes } from "react";
 import { useTranslation } from "react-i18next";
 
 interface CheckboxLabelInterface extends LabelHTMLAttributes<HTMLLabelElement> {
-  label: string;
+  label?: string;
   children: ReactNode;
 }
 
@@ -16,7 +16,7 @@ const CheckboxLabel: FC<CheckboxLabelInterface> = ({
   return (
     <div className="CheckboxLabel">
       <div className="CheckboxLabel__Container">
-        <label {...props}>{t(label)}</label>
+        {label && <label {...props}>{t(label)}</label>}
         {children}
       </div>
     </div>
