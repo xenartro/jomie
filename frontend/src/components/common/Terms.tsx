@@ -36,7 +36,7 @@ const Terms = () => {
           </p>
           <p>
             {t(
-              "1.2. You must be at least 13 years of age to create an account and use the Service. If you are under 16, you may use the Service only with the involvement and consent of a parent or guardian."
+              "1.2. You must be at least 16 years of age to create an account and use the Service. If you are under 16, you may use the Service only with the involvement and consent of a parent or guardian."
             )}
           </p>
           <p>
@@ -47,7 +47,7 @@ const Terms = () => {
           <h5>{t("2. Content Ownership and Rights")}</h5>
           <p>
             {t(
-              "2.1. You retain full ownership of all content (text, images, links, or other materials) you upload, post, or transmit through the Service (‘User Content’). By submitting User Content, you grant Jomie.io a worldwide, non-exclusive, royalty-free, revocable license to use, host, store, reproduce, and display your content, strictly for the purpose of operating, improving, and providing the Service. This license will end when you delete the User Content from the Service, except to the extent that such content has been shared with others who have not deleted it or where retention is required by law or for legitimate business purposes (e.g., backups)."
+              "2.1. You retain full ownership of all content (text, images, links, or other materials) you upload, post, or transmit through the Service ('User Content'). By submitting User Content, you grant Jomie.io a worldwide, non-exclusive, royalty-free, revocable license to use, host, store, reproduce, and display your content, strictly for the purpose of operating, improving, and providing the Service. This license will end when you delete the User Content from the Service, except to the extent that such content has been shared with others who have not deleted it or where retention is required by law or for legitimate business purposes (e.g., backups)."
             )}
           </p>
           <p>
@@ -77,7 +77,7 @@ const Terms = () => {
           </p>
           <p>
             {t(
-              "3.2. We may collect certain usage information and analytics data to improve the performance and features of the Service."
+              "3.2. We do not collect certain usage information and analytics data to improve the performance and features of the Service."
             )}
           </p>
 
