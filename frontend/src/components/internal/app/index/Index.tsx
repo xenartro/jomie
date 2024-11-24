@@ -5,6 +5,7 @@ import { TipOfTheDay } from "./TipOfTheDay";
 import Button from "components/common/button/Button";
 import DangerousActionButton from "components/common/dangerous-action-button/DangerousActionButton";
 import Footer from "components/common/footer/Footer";
+import { useLoginState } from "components/internal/LoginStateContext";
 import { useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
@@ -13,11 +14,17 @@ import { publishContents } from "services/content";
 const AppIndex = () => {
   const { t } = useTranslation();
   const { unpublishedChanges } = useAppContext();
+  const { user } = useLoginState();
+  
   const handlePublish = useCallback(() => {
     publishContents().then(() => {
       window.location.reload();
     });
   }, []);
+  
+  if (!user) {
+    return null;
+  }
 
   return (
     <div className="Home">
@@ -44,7 +51,7 @@ const AppIndex = () => {
                     icon="arrow-right"
                     iconRight
                   >
-                    Start Here
+                    {user.meta.customizations.basics_updated ? 'Edit' : 'Start here'}
                   </Button>
                 </Link>
               </div>
@@ -58,7 +65,20 @@ const AppIndex = () => {
                     icon="arrow-right"
                     iconRight
                   >
-                    Edit
+                    {user.meta.customizations.links_updated ? 'Edit' : 'Add links'}
+                  </Button>
+                </Link>
+              </div>
+              <div className="Option">
+                {t("Photos")}
+                <Link to="/app/content/posts">
+                  <Button
+                    size="small"
+                    variant="content"
+                    icon="arrow-right"
+                    iconRight
+                  >
+                    {user.meta.customizations.photos_updated ? 'Edit' : 'Upload photos'}
                   </Button>
                 </Link>
               </div>
@@ -71,7 +91,7 @@ const AppIndex = () => {
                     icon="arrow-right"
                     iconRight
                   >
-                    Edit
+                    {user.meta.customizations.blog_updated ? 'Edit' : 'Create post'}
                   </Button>
                 </Link>
               </div>
