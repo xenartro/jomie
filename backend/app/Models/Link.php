@@ -19,6 +19,9 @@ class Link extends Base
     public const TYPE_WHATSAPP = 6;
     public const TYPE_BLUESKY = 7;
     public const WHATSAPP_URL = "https://wa.me/";
+    public const CATEGORY_LINK = 0;
+    public const CATEGORY_SOCIAL = 1;
+    public const CATEGORY_STREAMING = 2;
 
     const VALIDATOR_RULES = [
         'title'            => ['required', 'string'],
