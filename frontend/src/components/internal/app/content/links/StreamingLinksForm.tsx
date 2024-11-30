@@ -15,10 +15,10 @@ import {
   ContentLinkData,
   EMPTY_LINK,
   LINKS_TYPE,
-  getSocialLinksContent,
   updateLinksContent,
   normalizeSocialLink,
   linkByType,
+  getStreamingLinksContent,
 } from "services/content";
 import { updateContentSocialLinksPreview } from "services/preview";
 
@@ -26,7 +26,7 @@ interface Props {
   refreshUnpublishedChanges(): void;
 }
 
-const SocialLinksForm = ({ refreshUnpublishedChanges }: Props) => {
+const StreamingLinksForm = ({ refreshUnpublishedChanges }: Props) => {
   const [data, setData] = useState<ContentLinkData[]>([]);
   const queryClient = useQueryClient();
 
@@ -90,9 +90,9 @@ const SocialLinksForm = ({ refreshUnpublishedChanges }: Props) => {
   return (
     <Form
       onSubmit={handleSubmit}
-      getData={getSocialLinksContent}
+      getData={getStreamingLinksContent}
       getDataCallback={onDataLoaded}
-      getDataName="getSocialLinksContent"
+      getDataName="getStreamingLinksContent"
     >
       <div>
         <div className="Layout --FlexibleGrid --Content LinkFormRow">
@@ -137,4 +137,4 @@ const SocialLinksForm = ({ refreshUnpublishedChanges }: Props) => {
   );
 };
 
-export default SocialLinksForm;
+export default StreamingLinksForm;

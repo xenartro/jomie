@@ -3,6 +3,7 @@ import { useContentContext } from "../editor/Editor";
 import "./Links.scss";
 import ContentLinksForm from "./LinksForm";
 import ContentSocialLinksForm from "./SocialLinksForm";
+import ContentStreamingLinksForm from "./StreamingLinksForm";
 import Tabs, { Tab } from "components/common/tabs/Tabs";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
@@ -11,6 +12,10 @@ const tabs: Tab[] = [
   {
     id: "social",
     label: "Social Links",
+  },
+  {
+    id: "streaming",
+    label: "Streaming Links",
   },
   {
     id: "other",
@@ -37,10 +42,14 @@ const ContentLinks = () => {
         <Tabs tabs={tabs} onClick={setTab} active={tab} />
       </div>
       <div className="Content__Links__Form">
-        {tab === "social" ? (
+        {tab === "other" && (
+            <ContentLinksForm {...context} />
+        )}
+        {tab === "social" && (
           <ContentSocialLinksForm {...context} />
-        ) : (
-          <ContentLinksForm {...context} />
+        )}
+        {tab === "streamiing" && (
+          <ContentStreamingLinksForm {...context} />
         )}
       </div>
       <div className="Content__Links__Form">

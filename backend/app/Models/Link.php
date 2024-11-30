@@ -29,6 +29,7 @@ class Link extends Base
         'meta_description' => ['string'],
         'meta_image'       => ['string'],
         'type'             => ['integer'],
+        'category'         => ['integer'],
     ];
 
     protected $table = 'links';
@@ -154,10 +155,11 @@ class Link extends Base
         return $link;
     }
 
-    public static function findFromUser(User $user, bool $published)
+    public static function findFromUser(User $user, bool $published, int $type)
     {
         return self::where('user_id', $user->id)
             ->where('published', $published)
+            ->where('category', $type)
             ->get();
     }
 

@@ -88,32 +88,22 @@ class Content {
     /**
      * Links
      */
-    public function getLinks($published = true, $type = 'all')
+    public function getLinks($published = true, int $type)
     {
-        $links = $published ? $this->getPublishedLinks() : $this->getUnpublishedLinks();
-        if ($type === 'all') {
-            return $links;
-        }
-        $filtered = [];
-        foreach ($links as $link) {
-            if (($type === 'social' && $link->type > 0) || ($type === 'other' && $link->type === 0)) {
-                $filtered[] = $link;
-            }
-        }
-        return $filtered;
+        return $published ? $this->getPublishedLinks($type) : $this->getUnpublishedLinks($type);
     }
-    public function getPublishedLinks()
+    public function getPublishedLinks(int $type)
     {
-        $links = Link::findFromUser($this->user, true);
+        $links = Link::findFromUser($this->user, true, $type);
 
         return $links;
     }
-    public function getUnpublishedLinks()
+    public function getUnpublishedLinks(int $type)
     {
-        $links = Link::findFromUser($this->user, false);
+        $links = Link::findFromUser($this->user, false, $type);
 
         if (!count($links)) {
-            return $this->getPublishedLinks($this->user);
+            return $this->getPublishedLinks($type);
         }
 
         return $links;
@@ -389,11 +379,12 @@ class Content {
     public function render($published = true)
     {
         return [
-            'basic'   => $this->getBasic($published),
-            'links'   => $this->getLinks($published, 'other'),
-            'socials' => $this->getLinks($published, 'social'),
-            'photos'  => $this->getRenderPhotos($published),
-            'posts'   => $this->getBlogPosts($published),
+            'basic'     => $this->getBasic($published),
+            'links'     => $this->getLinks($published, Link::CATEGORY_LINK),
+            'socials'   => $this->getLinks($published, Link::CATEGORY_SOCIAL),
+            'streaming' => $this->getLinks($published, Link::CATEGORY_STREAMING),
+            'photos'    => $this->getRenderPhotos($published),
+            'posts'     => $this->getBlogPosts($published),
         ];
     }
 

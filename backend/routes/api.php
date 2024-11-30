@@ -63,7 +63,7 @@ Route::middleware('auth:sanctum')->group(function () {
     });
     Route::get('/content/links', function (Request $request, Content $contentService) {
         return response()->json([
-            'data' => $contentService->getLinks(false),
+            'data' => $contentService->getLinks(false, intval($request->input('category'))),
         ]);
     });
     Route::post('/content/links', function (Request $request, Content $contentService) {
