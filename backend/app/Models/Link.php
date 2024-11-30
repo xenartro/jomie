@@ -155,12 +155,15 @@ class Link extends Base
         return $link;
     }
 
-    public static function findFromUser(User $user, bool $published, int $category)
+    public static function findFromUser(User $user, bool $published, $category = NULL)
     {
-        return self::where('user_id', $user->id)
-            ->where('published', $published)
-            ->where('category', $category)
-            ->get();
+        $query = self::where('user_id', $user->id)
+            ->where('published', $published);
+
+        if ($category) {
+            $query->where('category', $category);
+        }
+        return $query->get();
     }
 
     public static function countFromUser(User $user, bool $published, int $category)

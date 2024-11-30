@@ -88,9 +88,14 @@ class Content {
     /**
      * Links
      */
-    public function getLinks($published = true, int $category)
+    public function getLinks($published = true, array $categories)
     {
-        return $published ? $this->getPublishedLinks($category) : $this->getUnpublishedLinks($category);
+        foreach ($categories as $category) {
+            $categoryLinks = $published ? $this->getPublishedLinks($category) : $this->getUnpublishedLinks($category);
+            $links = isset($links) ? $links->merge($categoryLinks) : $categoryLinks;
+        }
+
+        return $links;
     }
     public function getPublishedLinks(int $category)
     {
@@ -381,9 +386,9 @@ class Content {
     {
         return [
             'basic'     => $this->getBasic($published),
-            'links'     => $this->getLinks($published, Link::CATEGORY_LINK),
-            'socials'   => $this->getLinks($published, Link::CATEGORY_SOCIAL),
-            'streaming' => $this->getLinks($published, Link::CATEGORY_STREAMING),
+            'links'     => $this->getLinks($published, [Link::CATEGORY_LINK]),
+            'socials'   => $this->getLinks($published, [Link::CATEGORY_SOCIAL]),
+            'streaming' => $this->getLinks($published, [Link::CATEGORY_STREAMING]),
             'photos'    => $this->getRenderPhotos($published),
             'posts'     => $this->getBlogPosts($published),
         ];

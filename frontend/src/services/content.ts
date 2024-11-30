@@ -47,9 +47,9 @@ export interface ContentLinkData {
   type: number;
 }
 
-export const getLinks = async (category: number) => {
+export const getLinks = async (category: number[]) => {
   const response = await api.get<{ data: ContentLinkData[] }>(
-    `/api/content/links?category=${category}`
+    `/api/content/links?categories=${category.join(',')}`
   );
   if (response.data?.data) {
     return response.data.data;
@@ -59,15 +59,15 @@ export const getLinks = async (category: number) => {
 };
 
 export const getLinksContent = async () => {
-  return getLinks(0);
+  return getLinks([0]);
 };
 
 export const getSocialLinksContent = async () => {
-  return getLinks(1);
+  return getLinks([1, 2]);
 };
 
 export const getStreamingLinksContent = async () => {
-  return getLinks(2);
+  return getLinks([1, 2]);
 };
 
 export const SOCIAL_LINKS_TYPE = [
