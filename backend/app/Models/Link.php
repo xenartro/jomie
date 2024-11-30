@@ -18,6 +18,9 @@ class Link extends Base
     public const TYPE_LINKEDIN = 5;
     public const TYPE_WHATSAPP = 6;
     public const TYPE_BLUESKY = 7;
+    public const TYPE_YOUTUBE = 8;
+    public const TYPE_TWITCH = 9;
+    public const TYPE_KICK = 10;
     public const WHATSAPP_URL = "https://wa.me/";
     public const CATEGORY_LINK = 0;
     public const CATEGORY_SOCIAL = 1;

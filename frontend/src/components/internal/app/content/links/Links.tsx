@@ -42,15 +42,9 @@ const ContentLinks = () => {
         <Tabs tabs={tabs} onClick={setTab} active={tab} />
       </div>
       <div className="Content__Links__Form">
-        {tab === "other" && (
-            <ContentLinksForm {...context} />
-        )}
-        {tab === "social" && (
-          <ContentSocialLinksForm {...context} />
-        )}
-        {tab === "streamiing" && (
-          <ContentStreamingLinksForm {...context} />
-        )}
+        {tab === "other" && <ContentLinksForm {...context} />}
+        {tab === "social" && <ContentSocialLinksForm {...context} />}
+        {tab === "streaming" && <ContentStreamingLinksForm {...context} />}
       </div>
       <div className="Content__Links__Form">
         <ContentNameForm content="links" />

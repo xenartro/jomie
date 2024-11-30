@@ -14,11 +14,11 @@ import {
 import {
   ContentLinkData,
   EMPTY_LINK,
-  LINKS_TYPE,
+  SOCIAL_LINKS_TYPE,
   getSocialLinksContent,
   updateLinksContent,
   normalizeSocialLink,
-  linkByType,
+  socialLinkByType,
 } from "services/content";
 import { updateContentSocialLinksPreview } from "services/preview";
 
@@ -37,7 +37,7 @@ const SocialLinksForm = ({ refreshUnpublishedChanges }: Props) => {
   const onDataLoaded = useCallback(
     (data: ContentLinkData[]) => {
       setData(
-        LINKS_TYPE.map((linkType) => {
+        SOCIAL_LINKS_TYPE.map((linkType) => {
           const link = data.find((link) => link.type === linkType.type);
           if (link) {
             return link;
@@ -69,7 +69,7 @@ const SocialLinksForm = ({ refreshUnpublishedChanges }: Props) => {
   const handleSocialLinkBlur = useCallback(
     (i: number, e: FocusEvent<HTMLInputElement>) => {
       const newData = [...data];
-      const linkType = linkByType(newData[i].type);
+      const linkType = socialLinkByType(newData[i].type);
       if (!linkType) {
         return;
       }
@@ -84,7 +84,7 @@ const SocialLinksForm = ({ refreshUnpublishedChanges }: Props) => {
 
   const handleSubmit = useCallback(async () => {
     await updateLinksContent(data);
-    queryClient.invalidateQueries({ queryKey: ["getLinksContent"] });
+    queryClient.invalidateQueries({ queryKey: ["getSocialLinksContent"] });
   }, [data, queryClient]);
 
   return (
@@ -97,21 +97,21 @@ const SocialLinksForm = ({ refreshUnpublishedChanges }: Props) => {
       <div>
         <div className="Layout --FlexibleGrid --Content LinkFormRow">
           {data.map((link, i) =>
-            link.type > 0 && linkByType(link.type) !== undefined ? (
+            link.type > 0 && socialLinkByType(link.type) !== undefined ? (
               <div className="Row LinkFormRow__Row" key={link.type}>
                 <div className="Col --size12">
                   <FieldLabel
-                    htmlFor={`link-${linkByType(link.type)?.name}-url`}
-                    label={linkByType(link.type)?.name ?? "Unknown"}
+                    htmlFor={`link-${socialLinkByType(link.type)?.name}-url`}
+                    label={socialLinkByType(link.type)?.name ?? "Unknown"}
                   >
                     <Input
-                      id={`link-${linkByType(link.type)?.name}-url`}
+                      id={`link-${socialLinkByType(link.type)?.name}-url`}
                       name="url"
                       value={link.url}
                       placeholder={
                         link.type !== 6
                           ? `Add your ${
-                              linkByType(link.type)?.name
+                              socialLinkByType(link.type)?.name
                             } URL or user`
                           : "Phone number with code. E.g. +34600123123"
                       }

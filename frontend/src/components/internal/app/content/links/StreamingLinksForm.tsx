@@ -14,10 +14,10 @@ import {
 import {
   ContentLinkData,
   EMPTY_LINK,
-  LINKS_TYPE,
+  STREAMING_LINKS_TYPE,
   updateLinksContent,
   normalizeSocialLink,
-  linkByType,
+  streamingLinkByType,
   getStreamingLinksContent,
 } from "services/content";
 import { updateContentSocialLinksPreview } from "services/preview";
@@ -37,7 +37,7 @@ const StreamingLinksForm = ({ refreshUnpublishedChanges }: Props) => {
   const onDataLoaded = useCallback(
     (data: ContentLinkData[]) => {
       setData(
-        LINKS_TYPE.map((linkType) => {
+        STREAMING_LINKS_TYPE.map((linkType) => {
           const link = data.find((link) => link.type === linkType.type);
           if (link) {
             return link;
@@ -69,7 +69,7 @@ const StreamingLinksForm = ({ refreshUnpublishedChanges }: Props) => {
   const handleSocialLinkBlur = useCallback(
     (i: number, e: FocusEvent<HTMLInputElement>) => {
       const newData = [...data];
-      const linkType = linkByType(newData[i].type);
+      const linkType = streamingLinkByType(newData[i].type);
       if (!linkType) {
         return;
       }
@@ -84,7 +84,7 @@ const StreamingLinksForm = ({ refreshUnpublishedChanges }: Props) => {
 
   const handleSubmit = useCallback(async () => {
     await updateLinksContent(data);
-    queryClient.invalidateQueries({ queryKey: ["getLinksContent"] });
+    queryClient.invalidateQueries({ queryKey: ["getStreamingLinksContent"] });
   }, [data, queryClient]);
 
   return (
@@ -97,24 +97,20 @@ const StreamingLinksForm = ({ refreshUnpublishedChanges }: Props) => {
       <div>
         <div className="Layout --FlexibleGrid --Content LinkFormRow">
           {data.map((link, i) =>
-            link.type > 0 && linkByType(link.type) !== undefined ? (
+            link.type > 0 && streamingLinkByType(link.type) !== undefined ? (
               <div className="Row LinkFormRow__Row" key={link.type}>
                 <div className="Col --size12">
                   <FieldLabel
-                    htmlFor={`link-${linkByType(link.type)?.name}-url`}
-                    label={linkByType(link.type)?.name ?? "Unknown"}
+                    htmlFor={`link-${streamingLinkByType(link.type)?.name}-url`}
+                    label={streamingLinkByType(link.type)?.name ?? "Unknown"}
                   >
                     <Input
-                      id={`link-${linkByType(link.type)?.name}-url`}
+                      id={`link-${streamingLinkByType(link.type)?.name}-url`}
                       name="url"
                       value={link.url}
-                      placeholder={
-                        link.type !== 6
-                          ? `Add your ${
-                              linkByType(link.type)?.name
-                            } URL or user`
-                          : "Phone number with code. E.g. +34600123123"
-                      }
+                      placeholder={`Add your ${
+                        streamingLinkByType(link.type)?.name
+                      } URL or user`}
                       type="text"
                       onChange={handleChange.bind(null, i)}
                       onBlur={handleSocialLinkBlur.bind(null, i)}

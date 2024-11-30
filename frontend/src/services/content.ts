@@ -55,22 +55,22 @@ export const getLinks = async (category: number) => {
     return response.data.data;
   }
 
-  return null;
-}
+  return [];
+};
 
 export const getLinksContent = async () => {
   return getLinks(0);
 };
 
 export const getSocialLinksContent = async () => {
-  return getLinksContent(1);
+  return getLinks(1);
 };
 
 export const getStreamingLinksContent = async () => {
-  return getLinksContent(2);
+  return getLinks(2);
 };
 
-export const LINKS_TYPE = [
+export const SOCIAL_LINKS_TYPE = [
   {
     name: "Bluesky",
     type: 7,
@@ -113,8 +113,34 @@ export const LINKS_TYPE = [
   },
 ];
 
-export const linkByType = (type: number) => {
-  return LINKS_TYPE.find((link) => link.type === type);
+export const STREAMING_LINKS_TYPE = [
+  {
+    name: "YouTube",
+    type: 8,
+    url: "https://www.youtube.com",
+  },
+  {
+    name: "Twitch",
+    type: 9,
+    url: "https://www.twitch.tv",
+  },
+  {
+    name: "Kick",
+    type: 10,
+    url: "https://kick.com",
+  },
+];
+
+export const socialLinkByType = (type: number) => {
+  return SOCIAL_LINKS_TYPE.find((link) => link.type === type);
+};
+
+export const streamingLinkByType = (type: number) => {
+  return STREAMING_LINKS_TYPE.find((link) => link.type === type);
+};
+
+const linkByType = (type: number) => {
+  return socialLinkByType(type) ?? streamingLinkByType(type);
 };
 
 export const normalizeSocialLink = (url: string, type: number) => {
