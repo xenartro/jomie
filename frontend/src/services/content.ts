@@ -189,9 +189,9 @@ export const getLinkMetadata = async (url: string) => {
   return { image: "", description: "" };
 };
 
-export const updateLinksContent = async (data: ContentLinkData[]) => {
+export const updateLinksContent = async (data: ContentLinkData[], category: number) => {
   const cleanData = data.filter((data) => data.url !== "");
-  return await api.post("/api/content/links", { data: cleanData });
+  return await api.post(`/api/content/links/${category}`, { data: cleanData });
 };
 
 /**

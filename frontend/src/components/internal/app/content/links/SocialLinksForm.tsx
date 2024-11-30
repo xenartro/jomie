@@ -83,7 +83,7 @@ const SocialLinksForm = ({ refreshUnpublishedChanges }: Props) => {
   );
 
   const handleSubmit = useCallback(async () => {
-    await updateLinksContent(data);
+    await updateLinksContent(data, 1);
     queryClient.invalidateQueries({ queryKey: ["getSocialLinksContent"] });
   }, [data, queryClient]);
 

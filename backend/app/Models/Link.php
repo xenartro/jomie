@@ -32,7 +32,6 @@ class Link extends Base
         'meta_description' => ['string'],
         'meta_image'       => ['string'],
         'type'             => ['integer'],
-        'category'         => ['integer'],
     ];
 
     protected $table = 'links';
@@ -71,13 +70,6 @@ class Link extends Base
         return $data;
     }
 
-    public function linkCount(User $user, bool $published)
-    {
-        return Link::where('user_id', $user->id)
-            ->where('published', $published)
-            ->count();
-    }
-
     public static function linkExists(User $user, array $data, bool $published)
     {
         if (!is_array($data)) {
@@ -100,6 +92,8 @@ class Link extends Base
             ->where('url', $data['url'])
             ->where('meta_description', $data['meta_description'])
             ->where('meta_image', $data['meta_image'])
+            ->where('type', $data['type'])
+            ->where('category', $data['category'])
             ->where('published', $published)
             ->exists();
     }
@@ -112,10 +106,11 @@ class Link extends Base
             'meta_description' => 'Jomie: your place in the digital world',
             'meta_image'       => '',
             'type'             => self::TYPE_LINK,
+            'category'         => self::CATEGORY_LINK,
         ], true);
     }
 
-    public static function createEmpty(User $user)
+    public static function createEmpty(User $user, int $category)
     {
         $link = new Link([
             'title'            => '',
@@ -123,13 +118,14 @@ class Link extends Base
             'meta_description' => '',
             'meta_image'       => '',
             'type'             => self::TYPE_LINK,
+            'category'         => $category,
         ]);
         $link->user_id = $user->id;
         $link->published = false;
         $link->save();
     }
 
-    public static function createLink(User $user, array $data, bool $published)
+    public static function createLink(User $user, array $data, bool $published, int $category)
     {
         if (!$published && empty($data['url']) && empty($data['title'])) {
             return self::createEmpty($user);
@@ -145,7 +141,7 @@ class Link extends Base
             return;
         }
 
-        $linkCount = self::countFromUser($user, false);
+        $linkCount = self::countFromUser($user, false, $category);
         if ($linkCount > 50) {
             throw new Exception('Too many unpublished links');
         }
@@ -153,23 +149,25 @@ class Link extends Base
         $link = new Link($data);
         $link->user_id = $user->id;
         $link->published = $published;
+        $link->category = $category;
         $link->save();
 
         return $link;
     }
 
-    public static function findFromUser(User $user, bool $published, int $type)
+    public static function findFromUser(User $user, bool $published, int $category)
     {
         return self::where('user_id', $user->id)
             ->where('published', $published)
-            ->where('category', $type)
+            ->where('category', $category)
             ->get();
     }
 
-    public static function countFromUser(User $user, bool $published)
+    public static function countFromUser(User $user, bool $published, int $category)
     {
         return self::where('user_id', $user->id)
             ->where('published', $published)
+            ->where('category', $category)
             ->count();
     }
 

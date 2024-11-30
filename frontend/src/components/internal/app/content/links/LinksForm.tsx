@@ -148,7 +148,7 @@ const LinksForm = ({ refreshUnpublishedChanges }: Props) => {
   );
 
   const handleSubmit = useCallback(async () => {
-    const result = await updateLinksContent(data);
+    const result = await updateLinksContent(data, 0);
     queryClient.invalidateQueries({ queryKey: ["getLinksContent"] });
     return result;
   }, [data, queryClient]);

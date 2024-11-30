@@ -66,9 +66,9 @@ Route::middleware('auth:sanctum')->group(function () {
             'data' => $contentService->getLinks(false, intval($request->input('category'))),
         ]);
     });
-    Route::post('/content/links', function (Request $request, Content $contentService) {
-        $code = processMutation(function () use ($request, $contentService) {
-            $contentService->updateLinks($request->input('data'));
+    Route::post('/content/links/{category}', function (string $category, Request $request, Content $contentService) {
+        $code = processMutation(function () use ($category, $request, $contentService) {
+            $contentService->updateLinks($request->input('data'), intval($category));
         });
 
         return response('', $code);

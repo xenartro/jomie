@@ -83,7 +83,7 @@ const StreamingLinksForm = ({ refreshUnpublishedChanges }: Props) => {
   );
 
   const handleSubmit = useCallback(async () => {
-    await updateLinksContent(data);
+    await updateLinksContent(data, 2);
     queryClient.invalidateQueries({ queryKey: ["getStreamingLinksContent"] });
   }, [data, queryClient]);
 

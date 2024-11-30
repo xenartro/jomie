@@ -88,30 +88,30 @@ class Content {
     /**
      * Links
      */
-    public function getLinks($published = true, int $type)
+    public function getLinks($published = true, int $category)
     {
-        return $published ? $this->getPublishedLinks($type) : $this->getUnpublishedLinks($type);
+        return $published ? $this->getPublishedLinks($category) : $this->getUnpublishedLinks($category);
     }
-    public function getPublishedLinks(int $type)
+    public function getPublishedLinks(int $category)
     {
-        $links = Link::findFromUser($this->user, true, $type);
+        $links = Link::findFromUser($this->user, true, $category);
 
         return $links;
     }
-    public function getUnpublishedLinks(int $type)
+    public function getUnpublishedLinks(int $category)
     {
-        $links = Link::findFromUser($this->user, false, $type);
+        $links = Link::findFromUser($this->user, false, $category);
 
         if (!count($links)) {
-            return $this->getPublishedLinks($type);
+            return $this->getPublishedLinks($category);
         }
 
         return $links;
     }
-    public function updateLinks(array $linksData)
+    public function updateLinks(array $linksData, int $category)
     {
         $user = $this->user;
-        if (count($linksData) === Link::countFromUser($user, true)) {
+        if (count($linksData) === Link::countFromUser($user, true, $category)) {
             $newLinksData = array_filter($linksData, function ($link) use ($user) {
                 return !Link::linkExists($user, $link, true);
             });
@@ -126,15 +126,16 @@ class Content {
 
         Link::where('user_id', $this->user->id)
             ->where('published', false)
+            ->where('category', $category)
             ->delete();
 
         if (!count($linksData)) {
-            Link::createEmpty($this->user);
+            Link::createEmpty($this->user, $category);
             return;
         }
 
         foreach ($linksData as $data) {
-            Link::createLink($this->user, $data, false);
+            Link::createLink($this->user, $data, false, $category);
         }
     }
     private function publishLinks()
