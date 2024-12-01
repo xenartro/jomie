@@ -158,7 +158,7 @@ class User extends Authenticatable
     {
         $query = self::where('nickname', $nickname);
         if ($prefix) {
-            $query->where('prefix', $prefix);
+            $query->where('nickname_prefix', $prefix);
         }
 
         return $query->first();
