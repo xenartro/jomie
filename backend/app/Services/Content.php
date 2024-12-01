@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Services;
 
 use App\Models\BlogPost;
@@ -14,7 +15,8 @@ use Exception;
 use Illuminate\Http\Request;
 use Storage;
 
-class Content {
+class Content
+{
     private User $user;
     public function __construct(User | null $user = null)
     {
@@ -233,7 +235,8 @@ class Content {
         $blogPost->deleted = true;
         $blogPost->save();
     }
-    public function restoreBlogPost(int $id) {
+    public function restoreBlogPost(int $id)
+    {
         if (empty($id)) {
             throw new MutationException('Content', 400);
             return;
@@ -266,7 +269,7 @@ class Content {
         if ($path) {
             return Image::createFromUpload($path, $post);
         }
-        return NULL;
+        return null;
     }
     private function publishBlog()
     {
@@ -285,13 +288,13 @@ class Content {
         $photos = Photo::findFromUser($this->user, true);
         $max = 0;
         foreach ($photos as $photo) {
-            if (($photo->position-1) > $max) {
-                $max = $photo->position-1;
+            if (($photo->position - 1) > $max) {
+                $max = $photo->position - 1;
             }
         }
-        $renderPhotos = array_fill(0, $max, NULL);
+        $renderPhotos = array_fill(0, $max, null);
         foreach ($photos as $photo) {
-            $renderPhotos[$photo->position-1] = $photo;
+            $renderPhotos[$photo->position - 1] = $photo;
         }
         if ($published) {
             return $renderPhotos;
@@ -299,14 +302,14 @@ class Content {
         $unpublishedPhotos = Photo::findFromUser($this->user, false);
         foreach ($unpublishedPhotos as $photo) {
             if ($photo->deleted) {
-                $renderPhotos[$photo->position-1] = null;
+                $renderPhotos[$photo->position - 1] = null;
             } else {
-                $renderPhotos[$photo->position-1] = $photo;
+                $renderPhotos[$photo->position - 1] = $photo;
             }
         }
         return $renderPhotos;
     }
-    public function getPhotos($published = NULL)
+    public function getPhotos($published = null)
     {
         if ($published === true) {
             return Photo::findFromUser($this->user);
@@ -433,12 +436,16 @@ class Content {
             switch ($change) {
                 case 'links':
                     $this->publishLinks();
+                    break;
                 case 'basics':
                     $this->publishBasic();
+                    break;
                 case 'posts':
                     $this->publishBlog();
+                    break;
                 case 'photos':
                     $this->publishPhotos();
+                    break;
                 default:
                     // log error
             }
@@ -455,12 +462,16 @@ class Content {
             switch ($change) {
                 case 'links':
                     $this->discardLinks();
+                    break;
                 case 'basics':
                     $this->discardBasic();
+                    break;
                 case 'posts':
                     $this->discardBlog();
+                    break;
                 case 'photos':
                     $this->discardPhotos();
+                    break;
                 default:
                     // log error
             }

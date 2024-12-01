@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Models;
 
 use DB;
@@ -26,7 +27,7 @@ class Link extends Base
     public const CATEGORY_SOCIAL = 1;
     public const CATEGORY_STREAMING = 2;
 
-    const VALIDATOR_RULES = [
+    public const VALIDATOR_RULES = [
         'title'            => ['required', 'string'],
         'url'              => ['required', 'string', 'url'],
         'meta_description' => ['string'],
@@ -155,7 +156,7 @@ class Link extends Base
         return $link;
     }
 
-    public static function findFromUser(User $user, bool $published, $category = NULL)
+    public static function findFromUser(User $user, bool $published, $category = null)
     {
         $query = self::where('user_id', $user->id)
             ->where('published', $published);

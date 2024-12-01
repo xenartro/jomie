@@ -12,7 +12,7 @@ class BlogPost extends Base
 {
     use HasFactory;
 
-    const VALIDATOR_RULES = [
+    public const VALIDATOR_RULES = [
         'title' => ['required', 'string'],
         'content' => ['required', 'string'],
     ];
@@ -67,7 +67,7 @@ class BlogPost extends Base
         $path = Storage::disk('images')->putFile('post', $imageFile);
         $this->attributes['image'] = $path;
     }
-    
+
     /**
      * Methods
      */
@@ -150,11 +150,11 @@ class BlogPost extends Base
             foreach ($changedPosts as $post) {
                 if ($post->deleted) {
                     $post->delete();
-                } else if ($post->edited_id) {
+                } elseif ($post->edited_id) {
                     $editedPostId = $post->edited_id;
 
                     $post->published = true;
-                    $post->edited_id = NULL;
+                    $post->edited_id = null;
                     $post->save();
 
                     $oldPost = self::findOneFromUser($editedPostId, $user);
