@@ -43,6 +43,8 @@ class Stat extends Base
             'checksum' => $signature,
         ]);
         $stat->save();
+        $user->stats = $user->stats + 1;
+        $user->save();
     }
 
     public static function statExists(User $user, string $signature)
