@@ -135,8 +135,10 @@ if (env('APP_ENV') !== 'local') {
         return file_get_contents(public_path('index.html'));
     })->where('any', '.*');
 
-    Route::get('/{nickname}', $handleRender)->where('nickname', '^[a-zA-Z0-9-_]{1,30}$');
-    Route::get('/@{nickname}', $handleRender)->where('nickname', '^[a-zA-Z0-9-_]{1,30}$');
+    Route::get('/{nickname}', $handleRender)
+        ->where('nickname', '^[a-zA-Z0-9-_]{1,30}$');
+    Route::get('/@{nickname}', $handleRender)
+        ->where('nickname', '^[a-zA-Z0-9-_]{1,30}$');
     Route::get('/{prefix}/{nickname}', $handlePrefixRender)
         ->where('prefix', '^[a-zA-Z0-9-_]{1,30}$')
         ->where('nickname', '^[a-zA-Z0-9-_]{1,30}$');
@@ -148,8 +150,10 @@ if (env('APP_ENV') !== 'local') {
         return file_get_contents(public_path('index.html'));
     })->where('any', '.*');
 } else {
-    Route::get('/{nickname}', $handleRender)->where('nickname', '^[a-zA-Z0-9-_]{1,30}$');
-    Route::get('/@{nickname}', $handleRender)->where('nickname', '^[a-zA-Z0-9-_]{1,30}$');
+    Route::get('/{nickname}', $handleRender)
+        ->where('nickname', '^[a-zA-Z0-9-_]{1,30}$');
+    Route::get('/@{nickname}', $handleRender)
+        ->where('nickname', '^[a-zA-Z0-9-_]{1,30}$');
     Route::get('/{prefix}/{nickname}', $handlePrefixRender)
         ->where('prefix', '^[a-zA-Z0-9-_]{1,30}$')
         ->where('nickname', '^[a-zA-Z0-9-_]{1,30}$');

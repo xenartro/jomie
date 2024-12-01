@@ -37,6 +37,7 @@ import UsageType from "components/internal/first-time/UsageType";
 import AccountSettings from "components/internal/settings/Account/Account";
 import Settings from "components/internal/settings/Settings";
 import SiteSettings from "components/internal/settings/Site/Site";
+import Stats from "components/internal/settings/Stats/Stats";
 import { Routes, Route } from "react-router-dom";
 
 const Router = () => {
@@ -76,7 +77,8 @@ const Router = () => {
           </Route>
           <Route path="/app/settings" element={<Settings />}>
             <Route index element={<SiteSettings />} />
-            <Route path="account" element={<AccountSettings />} />
+            <Route path="account" element={<AccountSettings />} />ç
+            <Route path="stats" element={<Stats />} />
           </Route>
           <Route path="*" element={<FourZeroFour />} />
         </Route>
