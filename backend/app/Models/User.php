@@ -145,9 +145,30 @@ class User extends Authenticatable
         ];
     }
 
+    /**
+     * Static methods
+     */
+    public static function getByNickname(string $nickname, $prefix = null)
+    {
+        $query = self::where('nickname', $nickname);
+        if ($prefix) {
+            $query->where('prefix', $prefix);
+        }
+
+        return $query->first();
+    }
+
+    /**
+     * Methods
+     */
     public function getUrlAttribute()
     {
-        $base = 'https://jomie.io/';
+        return $this->getUserUrl(true);
+    }
+
+    public function getUserUrl($withBase = false)
+    {
+        $base = $withBase ? 'https://jomie.io/' : '';
         if ($this->nickname_prefix) {
             return $base . $this->nickname_prefix . '/' . $this->nickname;
         }
