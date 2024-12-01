@@ -13,7 +13,7 @@ class Photo extends Base
     use HasFactory;
 
     protected $table = 'photos';
-    
+
     /**
      * The attributes that should be hidden for arrays.
      *
@@ -80,11 +80,11 @@ class Photo extends Base
             ->where('position', $position)
             ->where('published', $published)
             ->first();
-        
+
         if (!$photo) {
             return;
         }
-        
+
         $image = Image::findByObject($photo);
         if ($image) {
             $image->delete();

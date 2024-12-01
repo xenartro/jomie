@@ -1,11 +1,13 @@
 <?php
+
 namespace App\Services;
 
 use App\Models\User;
 use Auth;
 use DB;
 
-class Meta {
+class Meta
+{
     private User $user;
     public function __construct(User | null $user = null)
     {

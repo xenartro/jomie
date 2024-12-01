@@ -108,8 +108,7 @@ class UserPreference extends Model
 
     public static function themeName(int $id)
     {
-        switch ($id)
-        {
+        switch ($id) {
             case self::THEME_AUTO:
                 return 'auto';
             case self::THEME_LIGHT:
@@ -118,13 +117,12 @@ class UserPreference extends Model
                 return 'dark';
             default:
                 return self::themeName(self::THEME_DEFAULT);
-            }
         }
+    }
 
     public static function themeId(string $themeName): int
     {
-        switch ($themeName)
-        {
+        switch ($themeName) {
             case 'auto':
                 return self::THEME_AUTO;
             case 'light':

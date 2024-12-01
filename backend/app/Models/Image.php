@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -9,7 +10,7 @@ class Image extends Base
     use HasFactory;
 
     protected $table = 'images';
-    
+
     /**
      * The attributes that should be hidden for arrays.
      *
