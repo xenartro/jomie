@@ -130,6 +130,8 @@ class User extends Authenticatable
         $visualService = new Visual($this);
         $metaService = new Meta($this);
 
+        $maxStats = Stat::getHighestStat($this);
+
         return [
             'unpublished' => [
                 'content' => $contentService->unpublishedContents(),
@@ -141,13 +143,38 @@ class User extends Authenticatable
                 'links_updated'  => $metaService->isLinksUpdated(),
                 'photos_updated' => $metaService->isPhotosUpdated(),
                 'blog_updated'   => $metaService->isBlogUpdated(),
+            ],
+            'stats' => [
+                'today'   => Stat::getTodayStats($this),
+                'highest' => $maxStats ? ['date' => $maxStats->date, 'count' => $maxStats->total ] : null,
             ]
         ];
     }
 
+    /**
+     * Static methods
+     */
+    public static function getByNickname(string $nickname, $prefix = null)
+    {
+        $query = self::where('nickname', $nickname);
+        if ($prefix) {
+            $query->where('prefix', $prefix);
+        }
+
+        return $query->first();
+    }
+
+    /**
+     * Methods
+     */
     public function getUrlAttribute()
     {
-        $base = 'https://jomie.io/';
+        return $this->getUserUrl(true);
+    }
+
+    public function getUserUrl($withBase = false)
+    {
+        $base = $withBase ? 'https://jomie.io/' : '';
         if ($this->nickname_prefix) {
             return $base . $this->nickname_prefix . '/' . $this->nickname;
         }
