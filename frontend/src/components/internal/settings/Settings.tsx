@@ -24,6 +24,9 @@ const Settings = () => {
               <NavLink to="/app/settings/account">{t("My Account")}</NavLink>
             </li>
             <li>
+              <NavLink to="/app/settings/stats">{t("Stats")}</NavLink>
+            </li>
+            <li>
               <NavLink to="/logout">
                 <Button type="button" size="small" variant="secondary">
                   {t("Logout")}

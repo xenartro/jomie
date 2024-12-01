@@ -130,6 +130,8 @@ class User extends Authenticatable
         $visualService = new Visual($this);
         $metaService = new Meta($this);
 
+        $maxStats = Stat::getHighestStat($this);
+
         return [
             'unpublished' => [
                 'content' => $contentService->unpublishedContents(),
@@ -141,6 +143,10 @@ class User extends Authenticatable
                 'links_updated'  => $metaService->isLinksUpdated(),
                 'photos_updated' => $metaService->isPhotosUpdated(),
                 'blog_updated'   => $metaService->isBlogUpdated(),
+            ],
+            'stats' => [
+                'today'   => Stat::getTodayStats($this),
+                'highest' => $maxStats ? ['date' => $maxStats->date, 'count' => $maxStats->total ] : null,
             ]
         ];
     }

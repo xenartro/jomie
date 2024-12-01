@@ -12,6 +12,7 @@ interface UserData {
   nickname: string;
   nickname_prefix: string;
   preferences?: UserPreferences;
+  stats: number;
   meta: UserMeta;
 }
 
@@ -53,6 +54,15 @@ interface UserMeta {
   unpublished: UnpublishedType;
   profile_image: string;
   customizations: CustomizationsType;
+  stats: UserStats;
+}
+
+interface UserStats {
+  today: number;
+  highest: null | {
+    date: string;
+    count: number;
+  }
 }
 
 class User {
@@ -60,6 +70,7 @@ class User {
   name: string;
   nickname: string;
   nickname_prefix: string;
+  stats: number;
   preferences: UserPreferences = {
     theme_name: "light",
     setup_skipped: false,
@@ -86,6 +97,7 @@ class User {
     this.name = data.name;
     this.nickname = data.nickname;
     this.nickname_prefix = data.nickname_prefix;
+    this.stats = data.stats;
     if (data.preferences) {
       this.preferences = data.preferences;
     }
