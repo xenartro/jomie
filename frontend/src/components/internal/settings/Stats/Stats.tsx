@@ -18,7 +18,9 @@ const AccountSettings = () => {
       </p>
       {user.meta.stats.highest && (
         <p>
-          <strong>{t("Highest visits")}</strong>: {user.meta.stats.highest.count} - {(new Date(user.meta.stats.highest.date)).toLocaleDateString()}
+          <strong>{t("Highest visits")}</strong>:{" "}
+          {user.meta.stats.highest.count} -{" "}
+          {new Date(user.meta.stats.highest.date).toLocaleDateString()}
         </p>
       )}
     </div>

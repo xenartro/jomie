@@ -62,7 +62,7 @@ interface UserStats {
   highest: null | {
     date: string;
     count: number;
-  }
+  };
 }
 
 class User {
