@@ -28,14 +28,19 @@ interface Props {
 
 const SocialLinksForm = ({ refreshUnpublishedChanges }: Props) => {
   const [data, setData] = useState<ContentLinkData[]>([]);
+  const [otherLinks, setOtherLinks] = useState<ContentLinkData[]>([]);
   const queryClient = useQueryClient();
 
   useLayoutEffect(() => {
-    updateContentSocialLinksPreview(data);
+    updateContentSocialLinksPreview([
+      ...otherLinks,
+      ...data,
+    ]);
   });
 
   const onDataLoaded = useCallback(
     (data: ContentLinkData[]) => {
+      setOtherLinks(data.filter(link => SOCIAL_LINKS_TYPE.find(({ type }) => type === link.type)));
       setData(
         SOCIAL_LINKS_TYPE.map((linkType) => {
           const link = data.find((link) => link.type === linkType.type);

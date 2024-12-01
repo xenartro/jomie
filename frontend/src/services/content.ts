@@ -151,7 +151,7 @@ export const normalizeSocialLink = (url: string, type: number) => {
   }
   try {
     const urlInstance = new URL(url);
-    if (urlInstance && url.startsWith("http://")) {
+    if (urlInstance && (url.startsWith("http://") && url.startsWith("https://"))) {
       return url;
     }
   } catch (e) {

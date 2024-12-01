@@ -160,7 +160,7 @@ class Link extends Base
         $query = self::where('user_id', $user->id)
             ->where('published', $published);
 
-        if ($category) {
+        if (isset($category)) {
             $query->where('category', $category);
         }
         return $query->get();
@@ -182,13 +182,31 @@ class Link extends Base
             ->exists();
     }
 
+    public static function getUnpublishedCategories()
+    {
+        $categories = DB::table('links')
+            ->where('published', false)
+            ->select('category')
+            ->distinct()
+            ->get();
+
+        $unpublishedCategories = [];
+        foreach ($categories as $category) {
+            $unpublishedCategories[] = $category->category;
+        }
+        return $unpublishedCategories;
+    }
+
     public static function publish(User $user)
     {
         DB::transaction(function () use ($user) {
-            $publishedLinks = self::findFromUser($user, true);
-            if ($publishedLinks) {
-                foreach ($publishedLinks as $link) {
-                    $link->delete();
+            $categories = self::getUnpublishedCategories();
+            foreach ($categories as $category) {
+                $publishedLinks = self::findFromUser($user, true, $category);
+                if ($publishedLinks) {
+                    foreach ($publishedLinks as $link) {
+                        $link->delete();
+                    }
                 }
             }
 

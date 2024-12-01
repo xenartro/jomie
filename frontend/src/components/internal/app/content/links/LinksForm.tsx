@@ -24,6 +24,7 @@ interface LinkFormRowProps {
 
 const LinkFormRow = ({ index, link, onChange, onRemove }: LinkFormRowProps) => {
   const { t } = useTranslation();
+  const [loadingMetadata, setLoadingMetadata] = useState(false);
   const handleChange = useCallback(
     (data: DataType) => {
       onChange(index, data as ContentLinkData);
@@ -39,6 +40,7 @@ const LinkFormRow = ({ index, link, onChange, onRemove }: LinkFormRowProps) => {
       if (!url) {
         return;
       }
+      setLoadingMetadata(true);
       getLinkMetadata(link.url).then((metadata) => {
         const data = {
           ...link,
@@ -46,14 +48,19 @@ const LinkFormRow = ({ index, link, onChange, onRemove }: LinkFormRowProps) => {
           meta_image: link.meta_image || metadata.image,
         };
         onChange(index, data as ContentLinkData);
+        setLoadingMetadata(false);
+      }).catch((e) => {
+        console.error(e);
+        setLoadingMetadata(false);
       });
     } catch (e) {
       console.error(e);
+      setLoadingMetadata(false);
     }
   }, [index, link, onChange]);
 
   return (
-    <div className="Layout --FlexibleGrid --Content LinkFormRow">
+    <div className={`Layout --FlexibleGrid --Content LinkFormRow ${loadingMetadata ? 'form--loading' : ''}`}>
       <div className="Row LinkFormRow__Row">
         <div className="Col --size5">
           <FieldLabel htmlFor={`link-${link.id}-title`} label="Title">

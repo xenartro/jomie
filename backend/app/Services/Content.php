@@ -387,8 +387,7 @@ class Content {
         return [
             'basic'     => $this->getBasic($published),
             'links'     => $this->getLinks($published, [Link::CATEGORY_LINK]),
-            'socials'   => $this->getLinks($published, [Link::CATEGORY_SOCIAL]),
-            'streaming' => $this->getLinks($published, [Link::CATEGORY_STREAMING]),
+            'socials'   => $this->getLinks($published, [Link::CATEGORY_SOCIAL, Link::CATEGORY_STREAMING]),
             'photos'    => $this->getRenderPhotos($published),
             'posts'     => $this->getBlogPosts($published),
         ];
