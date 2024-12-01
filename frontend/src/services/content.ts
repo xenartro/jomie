@@ -47,18 +47,30 @@ export interface ContentLinkData {
   type: number;
 }
 
-export const getLinksContent = async () => {
+export const getLinks = async (category: number[]) => {
   const response = await api.get<{ data: ContentLinkData[] }>(
-    "/api/content/links"
+    `/api/content/links?categories=${category.join(",")}`
   );
   if (response.data?.data) {
     return response.data.data;
   }
 
-  return null;
+  return [];
 };
 
-export const LINKS_TYPE = [
+export const getLinksContent = async () => {
+  return getLinks([0]);
+};
+
+export const getSocialLinksContent = async () => {
+  return getLinks([1, 2]);
+};
+
+export const getStreamingLinksContent = async () => {
+  return getLinks([1, 2]);
+};
+
+export const SOCIAL_LINKS_TYPE = [
   {
     name: "Bluesky",
     type: 7,
@@ -101,8 +113,34 @@ export const LINKS_TYPE = [
   },
 ];
 
-export const linkByType = (type: number) => {
-  return LINKS_TYPE.find((link) => link.type === type);
+export const STREAMING_LINKS_TYPE = [
+  {
+    name: "YouTube",
+    type: 8,
+    url: "https://www.youtube.com",
+  },
+  {
+    name: "Twitch",
+    type: 9,
+    url: "https://www.twitch.tv",
+  },
+  {
+    name: "Kick",
+    type: 10,
+    url: "https://kick.com",
+  },
+];
+
+export const socialLinkByType = (type: number) => {
+  return SOCIAL_LINKS_TYPE.find((link) => link.type === type);
+};
+
+export const streamingLinkByType = (type: number) => {
+  return STREAMING_LINKS_TYPE.find((link) => link.type === type);
+};
+
+const linkByType = (type: number) => {
+  return socialLinkByType(type) ?? streamingLinkByType(type);
 };
 
 export const normalizeSocialLink = (url: string, type: number) => {
@@ -113,7 +151,11 @@ export const normalizeSocialLink = (url: string, type: number) => {
   }
   try {
     const urlInstance = new URL(url);
-    if (urlInstance && url.startsWith("http://")) {
+    if (
+      urlInstance &&
+      url.startsWith("http://") &&
+      url.startsWith("https://")
+    ) {
       return url;
     }
   } catch (e) {
@@ -151,9 +193,12 @@ export const getLinkMetadata = async (url: string) => {
   return { image: "", description: "" };
 };
 
-export const updateLinksContent = async (data: ContentLinkData[]) => {
+export const updateLinksContent = async (
+  data: ContentLinkData[],
+  category: number
+) => {
   const cleanData = data.filter((data) => data.url !== "");
-  return await api.post("/api/content/links", { data: cleanData });
+  return await api.post(`/api/content/links/${category}`, { data: cleanData });
 };
 
 /**

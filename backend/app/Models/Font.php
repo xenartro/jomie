@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Models;
 
 use DB;
@@ -13,7 +14,7 @@ class Font extends Base
     public const BASIC_FONT_SIZE = 16;
     public const MIN_FONT_SIZE = 14;
 
-    const VALIDATOR_RULES = [
+    public const VALIDATOR_RULES = [
         //'name' => ['required', 'string'],
         'main_family' => ['required', 'string', 'max:100'],
         'ratio' => ['required', 'decimal:1,3',],
@@ -22,7 +23,7 @@ class Font extends Base
     ];
 
     protected $table = 'fonts';
-    
+
     /**
      * The attributes that should be hidden for arrays.
      *

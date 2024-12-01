@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Models;
 
 use DB;
@@ -18,9 +19,15 @@ class Link extends Base
     public const TYPE_LINKEDIN = 5;
     public const TYPE_WHATSAPP = 6;
     public const TYPE_BLUESKY = 7;
+    public const TYPE_YOUTUBE = 8;
+    public const TYPE_TWITCH = 9;
+    public const TYPE_KICK = 10;
     public const WHATSAPP_URL = "https://wa.me/";
+    public const CATEGORY_LINK = 0;
+    public const CATEGORY_SOCIAL = 1;
+    public const CATEGORY_STREAMING = 2;
 
-    const VALIDATOR_RULES = [
+    public const VALIDATOR_RULES = [
         'title'            => ['required', 'string'],
         'url'              => ['required', 'string', 'url'],
         'meta_description' => ['string'],
@@ -64,13 +71,6 @@ class Link extends Base
         return $data;
     }
 
-    public function linkCount(User $user, bool $published)
-    {
-        return Link::where('user_id', $user->id)
-            ->where('published', $published)
-            ->count();
-    }
-
     public static function linkExists(User $user, array $data, bool $published)
     {
         if (!is_array($data)) {
@@ -93,6 +93,8 @@ class Link extends Base
             ->where('url', $data['url'])
             ->where('meta_description', $data['meta_description'])
             ->where('meta_image', $data['meta_image'])
+            ->where('type', $data['type'])
+            ->where('category', $data['category'])
             ->where('published', $published)
             ->exists();
     }
@@ -105,10 +107,11 @@ class Link extends Base
             'meta_description' => 'Jomie: your place in the digital world',
             'meta_image'       => '',
             'type'             => self::TYPE_LINK,
+            'category'         => self::CATEGORY_LINK,
         ], true);
     }
 
-    public static function createEmpty(User $user)
+    public static function createEmpty(User $user, int $category)
     {
         $link = new Link([
             'title'            => '',
@@ -116,13 +119,14 @@ class Link extends Base
             'meta_description' => '',
             'meta_image'       => '',
             'type'             => self::TYPE_LINK,
+            'category'         => $category,
         ]);
         $link->user_id = $user->id;
         $link->published = false;
         $link->save();
     }
 
-    public static function createLink(User $user, array $data, bool $published)
+    public static function createLink(User $user, array $data, bool $published, int $category)
     {
         if (!$published && empty($data['url']) && empty($data['title'])) {
             return self::createEmpty($user);
@@ -138,7 +142,7 @@ class Link extends Base
             return;
         }
 
-        $linkCount = self::countFromUser($user, false);
+        $linkCount = self::countFromUser($user, false, $category);
         if ($linkCount > 50) {
             throw new Exception('Too many unpublished links');
         }
@@ -146,22 +150,28 @@ class Link extends Base
         $link = new Link($data);
         $link->user_id = $user->id;
         $link->published = $published;
+        $link->category = $category;
         $link->save();
 
         return $link;
     }
 
-    public static function findFromUser(User $user, bool $published)
+    public static function findFromUser(User $user, bool $published, $category = null)
     {
-        return self::where('user_id', $user->id)
-            ->where('published', $published)
-            ->get();
+        $query = self::where('user_id', $user->id)
+            ->where('published', $published);
+
+        if (isset($category)) {
+            $query->where('category', $category);
+        }
+        return $query->get();
     }
 
-    public static function countFromUser(User $user, bool $published)
+    public static function countFromUser(User $user, bool $published, int $category)
     {
         return self::where('user_id', $user->id)
             ->where('published', $published)
+            ->where('category', $category)
             ->count();
     }
 
@@ -173,13 +183,31 @@ class Link extends Base
             ->exists();
     }
 
+    public static function getUnpublishedCategories()
+    {
+        $categories = DB::table('links')
+            ->where('published', false)
+            ->select('category')
+            ->distinct()
+            ->get();
+
+        $unpublishedCategories = [];
+        foreach ($categories as $category) {
+            $unpublishedCategories[] = $category->category;
+        }
+        return $unpublishedCategories;
+    }
+
     public static function publish(User $user)
     {
         DB::transaction(function () use ($user) {
-            $publishedLinks = self::findFromUser($user, true);
-            if ($publishedLinks) {
-                foreach ($publishedLinks as $link) {
-                    $link->delete();
+            $categories = self::getUnpublishedCategories();
+            foreach ($categories as $category) {
+                $publishedLinks = self::findFromUser($user, true, $category);
+                if ($publishedLinks) {
+                    foreach ($publishedLinks as $link) {
+                        $link->delete();
+                    }
                 }
             }
 

@@ -62,13 +62,16 @@ Route::middleware('auth:sanctum')->group(function () {
         return response('', $code);
     });
     Route::get('/content/links', function (Request $request, Content $contentService) {
+        $categories = array_map(function ($category) {
+            return intval($category);
+        }, explode(',', $request->input('categories')) ?? []);
         return response()->json([
-            'data' => $contentService->getLinks(false),
+            'data' => $contentService->getLinks(false, $categories),
         ]);
     });
-    Route::post('/content/links', function (Request $request, Content $contentService) {
-        $code = processMutation(function () use ($request, $contentService) {
-            $contentService->updateLinks($request->input('data'));
+    Route::post('/content/links/{category}', function (string $category, Request $request, Content $contentService) {
+        $code = processMutation(function () use ($category, $request, $contentService) {
+            $contentService->updateLinks($request->input('data'), intval($category));
         });
 
         return response('', $code);

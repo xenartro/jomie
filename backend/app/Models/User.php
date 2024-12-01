@@ -16,8 +16,10 @@ use Exception;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable;
-    const DEFAULT_TIER = 'free';
+    use HasApiTokens;
+    use HasFactory;
+    use Notifiable;
+    public const DEFAULT_TIER = 'free';
 
     public static $forbiddenUsers = [
         'admin',

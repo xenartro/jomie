@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -8,7 +9,8 @@ class Base extends Model
 {
     use HasFactory;
 
-    public function getFillable() {
+    public function getFillable()
+    {
         return $this->fillable;
     }
 }
