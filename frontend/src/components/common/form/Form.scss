@@ -36,8 +36,8 @@
 }
 
 .Form {
-  height: '100%';
-  
+  height: "100%";
+
   .Form__ErrorMessage:first-of-type {
     margin-top: var(--sizing-x4);
   }
@@ -73,7 +73,6 @@
     visibility: hidden;
   }
 }
-
 
 @keyframes loadingBackground {
   0% {

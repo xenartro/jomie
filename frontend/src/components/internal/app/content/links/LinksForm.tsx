@@ -41,18 +41,20 @@ const LinkFormRow = ({ index, link, onChange, onRemove }: LinkFormRowProps) => {
         return;
       }
       setLoadingMetadata(true);
-      getLinkMetadata(link.url).then((metadata) => {
-        const data = {
-          ...link,
-          meta_description: link.meta_description || metadata.description,
-          meta_image: link.meta_image || metadata.image,
-        };
-        onChange(index, data as ContentLinkData);
-        setLoadingMetadata(false);
-      }).catch((e) => {
-        console.error(e);
-        setLoadingMetadata(false);
-      });
+      getLinkMetadata(link.url)
+        .then((metadata) => {
+          const data = {
+            ...link,
+            meta_description: link.meta_description || metadata.description,
+            meta_image: link.meta_image || metadata.image,
+          };
+          onChange(index, data as ContentLinkData);
+          setLoadingMetadata(false);
+        })
+        .catch((e) => {
+          console.error(e);
+          setLoadingMetadata(false);
+        });
     } catch (e) {
       console.error(e);
       setLoadingMetadata(false);
@@ -60,7 +62,11 @@ const LinkFormRow = ({ index, link, onChange, onRemove }: LinkFormRowProps) => {
   }, [index, link, onChange]);
 
   return (
-    <div className={`Layout --FlexibleGrid --Content LinkFormRow ${loadingMetadata ? 'form--loading' : ''}`}>
+    <div
+      className={`Layout --FlexibleGrid --Content LinkFormRow ${
+        loadingMetadata ? "form--loading" : ""
+      }`}
+    >
       <div className="Row LinkFormRow__Row">
         <div className="Col --size5">
           <FieldLabel htmlFor={`link-${link.id}-title`} label="Title">

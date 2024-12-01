@@ -49,7 +49,7 @@ export interface ContentLinkData {
 
 export const getLinks = async (category: number[]) => {
   const response = await api.get<{ data: ContentLinkData[] }>(
-    `/api/content/links?categories=${category.join(',')}`
+    `/api/content/links?categories=${category.join(",")}`
   );
   if (response.data?.data) {
     return response.data.data;
@@ -151,7 +151,11 @@ export const normalizeSocialLink = (url: string, type: number) => {
   }
   try {
     const urlInstance = new URL(url);
-    if (urlInstance && (url.startsWith("http://") && url.startsWith("https://"))) {
+    if (
+      urlInstance &&
+      url.startsWith("http://") &&
+      url.startsWith("https://")
+    ) {
       return url;
     }
   } catch (e) {
@@ -189,7 +193,10 @@ export const getLinkMetadata = async (url: string) => {
   return { image: "", description: "" };
 };
 
-export const updateLinksContent = async (data: ContentLinkData[], category: number) => {
+export const updateLinksContent = async (
+  data: ContentLinkData[],
+  category: number
+) => {
   const cleanData = data.filter((data) => data.url !== "");
   return await api.post(`/api/content/links/${category}`, { data: cleanData });
 };

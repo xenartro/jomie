@@ -32,15 +32,16 @@ const StreamingLinksForm = ({ refreshUnpublishedChanges }: Props) => {
   const queryClient = useQueryClient();
 
   useLayoutEffect(() => {
-    updateContentSocialLinksPreview([
-      ...otherLinks,
-      ...data,
-    ]);
+    updateContentSocialLinksPreview([...otherLinks, ...data]);
   });
 
   const onDataLoaded = useCallback(
     (data: ContentLinkData[]) => {
-      setOtherLinks(data.filter(link => STREAMING_LINKS_TYPE.find(({ type }) => type === link.type)));
+      setOtherLinks(
+        data.filter((link) =>
+          STREAMING_LINKS_TYPE.find(({ type }) => type === link.type)
+        )
+      );
       setData(
         STREAMING_LINKS_TYPE.map((linkType) => {
           const link = data.find((link) => link.type === linkType.type);
