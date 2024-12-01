@@ -436,16 +436,16 @@ class Content
             switch ($change) {
                 case 'links':
                     $this->publishLinks();
-                    // no break
+                    break;
                 case 'basics':
                     $this->publishBasic();
-                    // no break
+                    break;
                 case 'posts':
                     $this->publishBlog();
-                    // no break
+                    break;
                 case 'photos':
                     $this->publishPhotos();
-                    // no break
+                    break;
                 default:
                     // log error
             }
@@ -462,16 +462,16 @@ class Content
             switch ($change) {
                 case 'links':
                     $this->discardLinks();
-                    // no break
+                    break;
                 case 'basics':
                     $this->discardBasic();
-                    // no break
+                    break;
                 case 'posts':
                     $this->discardBlog();
-                    // no break
+                    break;
                 case 'photos':
                     $this->discardPhotos();
-                    // no break
+                    break;
                 default:
                     // log error
             }
