@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Services;
 
 use Auth;
@@ -10,7 +11,8 @@ use App\Models\UserPreference;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 
-class Settings {
+class Settings
+{
     use PasswordValidationRules;
     private User $user;
     public function __construct(User | null $user = null)

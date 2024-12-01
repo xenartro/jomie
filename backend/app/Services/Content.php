@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Services;
 
 use App\Models\BlogPost;
@@ -14,7 +15,8 @@ use Exception;
 use Illuminate\Http\Request;
 use Storage;
 
-class Content {
+class Content
+{
     private User $user;
     public function __construct(User | null $user = null)
     {
@@ -88,40 +90,35 @@ class Content {
     /**
      * Links
      */
-    public function getLinks($published = true, $type = 'all')
+    public function getLinks($published = true, array $categories)
     {
-        $links = $published ? $this->getPublishedLinks() : $this->getUnpublishedLinks();
-        if ($type === 'all') {
-            return $links;
+        foreach ($categories as $category) {
+            $categoryLinks = $published ? $this->getPublishedLinks($category) : $this->getUnpublishedLinks($category);
+            $links = isset($links) ? $links->merge($categoryLinks) : $categoryLinks;
         }
-        $filtered = [];
-        foreach ($links as $link) {
-            if (($type === 'social' && $link->type > 0) || ($type === 'other' && $link->type === 0)) {
-                $filtered[] = $link;
-            }
-        }
-        return $filtered;
-    }
-    public function getPublishedLinks()
-    {
-        $links = Link::findFromUser($this->user, true);
 
         return $links;
     }
-    public function getUnpublishedLinks()
+    public function getPublishedLinks(int $category)
     {
-        $links = Link::findFromUser($this->user, false);
+        $links = Link::findFromUser($this->user, true, $category);
+
+        return $links;
+    }
+    public function getUnpublishedLinks(int $category)
+    {
+        $links = Link::findFromUser($this->user, false, $category);
 
         if (!count($links)) {
-            return $this->getPublishedLinks($this->user);
+            return $this->getPublishedLinks($category);
         }
 
         return $links;
     }
-    public function updateLinks(array $linksData)
+    public function updateLinks(array $linksData, int $category)
     {
         $user = $this->user;
-        if (count($linksData) === Link::countFromUser($user, true)) {
+        if (count($linksData) === Link::countFromUser($user, true, $category)) {
             $newLinksData = array_filter($linksData, function ($link) use ($user) {
                 return !Link::linkExists($user, $link, true);
             });
@@ -136,15 +133,16 @@ class Content {
 
         Link::where('user_id', $this->user->id)
             ->where('published', false)
+            ->where('category', $category)
             ->delete();
 
         if (!count($linksData)) {
-            Link::createEmpty($this->user);
+            Link::createEmpty($this->user, $category);
             return;
         }
 
         foreach ($linksData as $data) {
-            Link::createLink($this->user, $data, false);
+            Link::createLink($this->user, $data, false, $category);
         }
     }
     private function publishLinks()
@@ -237,7 +235,8 @@ class Content {
         $blogPost->deleted = true;
         $blogPost->save();
     }
-    public function restoreBlogPost(int $id) {
+    public function restoreBlogPost(int $id)
+    {
         if (empty($id)) {
             throw new MutationException('Content', 400);
             return;
@@ -270,7 +269,7 @@ class Content {
         if ($path) {
             return Image::createFromUpload($path, $post);
         }
-        return NULL;
+        return null;
     }
     private function publishBlog()
     {
@@ -289,13 +288,13 @@ class Content {
         $photos = Photo::findFromUser($this->user, true);
         $max = 0;
         foreach ($photos as $photo) {
-            if (($photo->position-1) > $max) {
-                $max = $photo->position-1;
+            if (($photo->position - 1) > $max) {
+                $max = $photo->position - 1;
             }
         }
-        $renderPhotos = array_fill(0, $max, NULL);
+        $renderPhotos = array_fill(0, $max, null);
         foreach ($photos as $photo) {
-            $renderPhotos[$photo->position-1] = $photo;
+            $renderPhotos[$photo->position - 1] = $photo;
         }
         if ($published) {
             return $renderPhotos;
@@ -303,14 +302,14 @@ class Content {
         $unpublishedPhotos = Photo::findFromUser($this->user, false);
         foreach ($unpublishedPhotos as $photo) {
             if ($photo->deleted) {
-                $renderPhotos[$photo->position-1] = null;
+                $renderPhotos[$photo->position - 1] = null;
             } else {
-                $renderPhotos[$photo->position-1] = $photo;
+                $renderPhotos[$photo->position - 1] = $photo;
             }
         }
         return $renderPhotos;
     }
-    public function getPhotos($published = NULL)
+    public function getPhotos($published = null)
     {
         if ($published === true) {
             return Photo::findFromUser($this->user);
@@ -389,11 +388,11 @@ class Content {
     public function render($published = true)
     {
         return [
-            'basic'   => $this->getBasic($published),
-            'links'   => $this->getLinks($published, 'other'),
-            'socials' => $this->getLinks($published, 'social'),
-            'photos'  => $this->getRenderPhotos($published),
-            'posts'   => $this->getBlogPosts($published),
+            'basic'     => $this->getBasic($published),
+            'links'     => $this->getLinks($published, [Link::CATEGORY_LINK]),
+            'socials'   => $this->getLinks($published, [Link::CATEGORY_SOCIAL, Link::CATEGORY_STREAMING]),
+            'photos'    => $this->getRenderPhotos($published),
+            'posts'     => $this->getBlogPosts($published),
         ];
     }
 
@@ -437,12 +436,16 @@ class Content {
             switch ($change) {
                 case 'links':
                     $this->publishLinks();
+                    break;
                 case 'basics':
                     $this->publishBasic();
+                    break;
                 case 'posts':
                     $this->publishBlog();
+                    break;
                 case 'photos':
                     $this->publishPhotos();
+                    break;
                 default:
                     // log error
             }
@@ -459,12 +462,16 @@ class Content {
             switch ($change) {
                 case 'links':
                     $this->discardLinks();
+                    break;
                 case 'basics':
                     $this->discardBasic();
+                    break;
                 case 'posts':
                     $this->discardBlog();
+                    break;
                 case 'photos':
                     $this->discardPhotos();
+                    break;
                 default:
                     // log error
             }

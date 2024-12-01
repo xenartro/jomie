@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Models;
 
 use Bugsnag;
@@ -98,8 +99,7 @@ class VisualSetting extends Base
          * 1: multi page
          * 2: single page
          */
-        switch ($user->preferences->site_type)
-        {
+        switch ($user->preferences->site_type) {
             case 'personal-card':
                 $settings->layout_id = 2;
                 break;
@@ -126,8 +126,7 @@ class VisualSetting extends Base
          * 3 Monospace
          * 4 Cursive
          */
-        switch ($user->preferences->identity)
-        {
+        switch ($user->preferences->identity) {
             case 'content-creator':
                 $settings->font_id = 1;
                 break;

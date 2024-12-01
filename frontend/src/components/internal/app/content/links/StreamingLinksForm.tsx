@@ -14,11 +14,11 @@ import {
 import {
   ContentLinkData,
   EMPTY_LINK,
-  SOCIAL_LINKS_TYPE,
-  getSocialLinksContent,
+  STREAMING_LINKS_TYPE,
   updateLinksContent,
   normalizeSocialLink,
-  socialLinkByType,
+  streamingLinkByType,
+  getStreamingLinksContent,
 } from "services/content";
 import { updateContentSocialLinksPreview } from "services/preview";
 
@@ -26,7 +26,7 @@ interface Props {
   refreshUnpublishedChanges(): void;
 }
 
-const SocialLinksForm = ({ refreshUnpublishedChanges }: Props) => {
+const StreamingLinksForm = ({ refreshUnpublishedChanges }: Props) => {
   const [data, setData] = useState<ContentLinkData[]>([]);
   const [otherLinks, setOtherLinks] = useState<ContentLinkData[]>([]);
   const queryClient = useQueryClient();
@@ -39,11 +39,11 @@ const SocialLinksForm = ({ refreshUnpublishedChanges }: Props) => {
     (data: ContentLinkData[]) => {
       setOtherLinks(
         data.filter((link) =>
-          SOCIAL_LINKS_TYPE.find(({ type }) => type === link.type)
+          STREAMING_LINKS_TYPE.find(({ type }) => type === link.type)
         )
       );
       setData(
-        SOCIAL_LINKS_TYPE.map((linkType) => {
+        STREAMING_LINKS_TYPE.map((linkType) => {
           const link = data.find((link) => link.type === linkType.type);
           if (link) {
             return link;
@@ -75,7 +75,7 @@ const SocialLinksForm = ({ refreshUnpublishedChanges }: Props) => {
   const handleSocialLinkBlur = useCallback(
     (i: number, e: FocusEvent<HTMLInputElement>) => {
       const newData = [...data];
-      const linkType = socialLinkByType(newData[i].type);
+      const linkType = streamingLinkByType(newData[i].type);
       if (!linkType) {
         return;
       }
@@ -89,38 +89,34 @@ const SocialLinksForm = ({ refreshUnpublishedChanges }: Props) => {
   );
 
   const handleSubmit = useCallback(async () => {
-    await updateLinksContent(data, 1);
-    queryClient.invalidateQueries({ queryKey: ["getSocialLinksContent"] });
+    await updateLinksContent(data, 2);
+    queryClient.invalidateQueries({ queryKey: ["getStreamingLinksContent"] });
   }, [data, queryClient]);
 
   return (
     <Form
       onSubmit={handleSubmit}
-      getData={getSocialLinksContent}
+      getData={getStreamingLinksContent}
       getDataCallback={onDataLoaded}
-      getDataName="getSocialLinksContent"
+      getDataName="getStreamingLinksContent"
     >
       <div>
         <div className="Layout --FlexibleGrid --Content LinkFormRow">
           {data.map((link, i) =>
-            link.type > 0 && socialLinkByType(link.type) !== undefined ? (
+            link.type > 0 && streamingLinkByType(link.type) !== undefined ? (
               <div className="Row LinkFormRow__Row" key={link.type}>
                 <div className="Col --size12">
                   <FieldLabel
-                    htmlFor={`link-${socialLinkByType(link.type)?.name}-url`}
-                    label={socialLinkByType(link.type)?.name ?? "Unknown"}
+                    htmlFor={`link-${streamingLinkByType(link.type)?.name}-url`}
+                    label={streamingLinkByType(link.type)?.name ?? "Unknown"}
                   >
                     <Input
-                      id={`link-${socialLinkByType(link.type)?.name}-url`}
+                      id={`link-${streamingLinkByType(link.type)?.name}-url`}
                       name="url"
                       value={link.url}
-                      placeholder={
-                        link.type !== 6
-                          ? `Add your ${
-                              socialLinkByType(link.type)?.name
-                            } URL or user`
-                          : "Phone number with code. E.g. +34600123123"
-                      }
+                      placeholder={`Add your ${
+                        streamingLinkByType(link.type)?.name
+                      } URL or user`}
                       type="text"
                       onChange={handleChange.bind(null, i)}
                       onBlur={handleSocialLinkBlur.bind(null, i)}
@@ -143,4 +139,4 @@ const SocialLinksForm = ({ refreshUnpublishedChanges }: Props) => {
   );
 };
 
-export default SocialLinksForm;
+export default StreamingLinksForm;

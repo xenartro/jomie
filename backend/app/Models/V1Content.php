@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Models;
 
 use DB;
@@ -7,7 +8,7 @@ use Storage;
 class V1Content extends Base
 {
     protected $table = 'v1_contents';
-    
+
     /**
      * The attributes that should be hidden for arrays.
      *
@@ -100,7 +101,7 @@ class V1Content extends Base
             ->where('published', $published)
             ->exists();
     }
-    
+
     public static function publish(User $user)
     {
         DB::transaction(function () use ($user) {
@@ -109,7 +110,7 @@ class V1Content extends Base
                 // log error
                 return;
             }
-            
+
             $publishedContent = self::findFromUser($user, true);
 
             $unpublishedContent->published = true;

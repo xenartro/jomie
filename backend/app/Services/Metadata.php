@@ -1,9 +1,11 @@
 <?php
+
 namespace App\Services;
 
 use Exception;
 
-class Metadata {
+class Metadata
+{
     public function getURLMetadata(string $url)
     {
         try {
@@ -11,11 +13,12 @@ class Metadata {
         } catch (Exception $e) {
             return [];
         }
-        
+
         return $this->processMetadataTags($tags);
     }
 
-    private function processMetadataTags(array $tags) {
+    private function processMetadataTags(array $tags)
+    {
         $descriptionTags = ['og:description', 'description', 'twitter:description'];
         $imageTags = ['twitter:image:src', 'og:image'];
         $metaDescription = '';

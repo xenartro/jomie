@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Services;
 
 use Auth;
@@ -9,7 +10,8 @@ use App\Models\VisualSetting;
 use Exception;
 use DB;
 
-class Visual {
+class Visual
+{
     private User $user;
     public function __construct(User | null $user = null)
     {
@@ -140,7 +142,7 @@ class Visual {
 
     public function updateType(array $data)
     {
-        $palette = isset($data['id']) ? Font::getType($this->user, $data['id']) : NULL;
+        $palette = isset($data['id']) ? Font::getType($this->user, $data['id']) : null;
         if (!$palette) {
             throw new MutationException('Visual', 404);
         }
@@ -222,7 +224,7 @@ class Visual {
             $publishedSettings->delete();
         });
     }
-     
+
     /**
      * Discard
      */

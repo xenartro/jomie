@@ -24,6 +24,7 @@ interface LinkFormRowProps {
 
 const LinkFormRow = ({ index, link, onChange, onRemove }: LinkFormRowProps) => {
   const { t } = useTranslation();
+  const [loadingMetadata, setLoadingMetadata] = useState(false);
   const handleChange = useCallback(
     (data: DataType) => {
       onChange(index, data as ContentLinkData);
@@ -39,21 +40,33 @@ const LinkFormRow = ({ index, link, onChange, onRemove }: LinkFormRowProps) => {
       if (!url) {
         return;
       }
-      getLinkMetadata(link.url).then((metadata) => {
-        const data = {
-          ...link,
-          meta_description: link.meta_description || metadata.description,
-          meta_image: link.meta_image || metadata.image,
-        };
-        onChange(index, data as ContentLinkData);
-      });
+      setLoadingMetadata(true);
+      getLinkMetadata(link.url)
+        .then((metadata) => {
+          const data = {
+            ...link,
+            meta_description: link.meta_description || metadata.description,
+            meta_image: link.meta_image || metadata.image,
+          };
+          onChange(index, data as ContentLinkData);
+          setLoadingMetadata(false);
+        })
+        .catch((e) => {
+          console.error(e);
+          setLoadingMetadata(false);
+        });
     } catch (e) {
       console.error(e);
+      setLoadingMetadata(false);
     }
   }, [index, link, onChange]);
 
   return (
-    <div className="Layout --FlexibleGrid --Content LinkFormRow">
+    <div
+      className={`Layout --FlexibleGrid --Content LinkFormRow ${
+        loadingMetadata ? "form--loading" : ""
+      }`}
+    >
       <div className="Row LinkFormRow__Row">
         <div className="Col --size5">
           <FieldLabel htmlFor={`link-${link.id}-title`} label="Title">
@@ -148,7 +161,7 @@ const LinksForm = ({ refreshUnpublishedChanges }: Props) => {
   );
 
   const handleSubmit = useCallback(async () => {
-    const result = await updateLinksContent(data);
+    const result = await updateLinksContent(data, 0);
     queryClient.invalidateQueries({ queryKey: ["getLinksContent"] });
     return result;
   }, [data, queryClient]);

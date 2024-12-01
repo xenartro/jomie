@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Models;
 
 use App\Models\User;
@@ -9,7 +10,7 @@ class Palette extends Base
 {
     use HasFactory;
 
-    const VALIDATOR_RULES = [
+    public const VALIDATOR_RULES = [
         'balance' => ['required', 'integer', 'min:0', 'max:100'],
         'palette' => ['required', 'array', 'min:1'],
         'palette.*.hue' => ['integer', 'min:0', 'max:360'],
@@ -17,7 +18,7 @@ class Palette extends Base
     ];
 
     protected $table = 'palettes';
-    
+
     /**
      * The attributes that should be hidden for arrays.
      *
@@ -63,7 +64,7 @@ class Palette extends Base
         'balance',
     ];
 
-    public function toArray() 
+    public function toArray()
     {
         $getColorName = function (int $index) {
             switch ($index) {
@@ -89,13 +90,13 @@ class Palette extends Base
         //LO QUE VOY A HACER ES CALCULAR UN COLOR PARA CADA ELEMENTO DEL WEBSITE
         //DE ESTA FORMA PUEDO USAR MEJOR TODOS LOS COLORES DE LA PALETA
         $palette['colorsCount'] = count($palette['palette']);
-        $palette['backgrounds'] = self::calculateBackgrounds($this->balance, $palette['colorsCount'] );
-        $palette['navigation'] = self::calculateNavigation($this->balance, $palette['colorsCount'] );
-        $palette['text'] = self::calculateText($this->balance, $palette['colorsCount'] );
-        $palette['border'] = self::calculateBorder($this->balance, $palette['colorsCount'] );
+        $palette['backgrounds'] = self::calculateBackgrounds($this->balance, $palette['colorsCount']);
+        $palette['navigation'] = self::calculateNavigation($this->balance, $palette['colorsCount']);
+        $palette['text'] = self::calculateText($this->balance, $palette['colorsCount']);
+        $palette['border'] = self::calculateBorder($this->balance, $palette['colorsCount']);
         //
         $balance = self::calculateBalanceCoef($this->balance);
-        for ($j = 100; $j >= 10; $j-= 10) {
+        for ($j = 100; $j >= 10; $j -= 10) {
             $hue = $this->hue_1;
             $saturation = ceil($this->saturation_1 * $balance);
             $luminance = $j <= 90 ? $j : 99;
@@ -108,7 +109,7 @@ class Palette extends Base
             }
             $name = $getColorName($i);
             $palette['colors'][$name] = [];
-            for ($j = 100; $j >= 10; $j-= 10) {
+            for ($j = 100; $j >= 10; $j -= 10) {
                 $hue = $this->{'hue_' . $i};
                 $saturation = $this->{'saturation_' . $i};
                 $luminance = $j <= 90 ? $j : 99;
@@ -143,11 +144,11 @@ class Palette extends Base
     {
         if ($balance <= 5) {
             return 0.02;
-        } else if ($balance <= 25) {
+        } elseif ($balance <= 25) {
             return 0.15;
-        } else if ($balance <= 50) {
+        } elseif ($balance <= 50) {
             return 0.35;
-        } else if ($balance <= 85) {
+        } elseif ($balance <= 85) {
             return 0.75;
         } else {
             return 1;
@@ -158,11 +159,11 @@ class Palette extends Base
     {
         if ($balance <= 25) {
             return 0;
-        } else if ($balance <= 50) {
+        } elseif ($balance <= 50) {
             return 100;
-        } else if ($balance <= 75) {
+        } elseif ($balance <= 75) {
             return 200;
-        } 
+        }
         return 300;
     }
 
@@ -170,60 +171,60 @@ class Palette extends Base
     {
         if ($balance <= 25) {
             return 900;
-        } else if ($balance <= 50) {
+        } elseif ($balance <= 50) {
             return 900;
-        } else if ($balance <= 75) {
+        } elseif ($balance <= 75) {
             return 800;
-        } 
+        }
         return 800;
     }
 
     public static function calculateBackgrounds(int $balance, int $colors)
     {
-        if ($colors == 1 ) {
+        if ($colors == 1) {
             return "neutral";
-        } else if ($colors >= 2 && $balance <=50) {
+        } elseif ($colors >= 2 && $balance <= 50) {
             return "neutral";
-        } else if ($colors >= 2 && $balance >=50) {
+        } elseif ($colors >= 2 && $balance >= 50) {
             return "primary";
-        } 
+        }
         return "neutral";
     }
 
     public static function calculateText(int $balance, int $colors)
     {
-        if ($colors == 1 ) {
+        if ($colors == 1) {
             return "neutral";
-        } else if ($colors >= 2 && $balance >=50) {
+        } elseif ($colors >= 2 && $balance >= 50) {
             return "secondary";
-        } 
+        }
         return "neutral";
     }
     public static function calculateBorder(int $balance, int $colors)
     {
-        if ($balance <=50) {
+        if ($balance <= 50) {
             return self::calculateColorfulness($balance) + 100;
-        } else  {
+        } else {
             return self::calculateColorfulness($balance) + 200;
-        }  
-        
+        }
+
         return self::calculateColorfulness($balance);
     }
 
     public static function calculateNavigation(int $balance, int $colors)
     {
-        if ($balance <=50) {
+        if ($balance <= 50) {
             return "neutral";
-        } else if ($colors == 1) {
+        } elseif ($colors == 1) {
             return "neutral";
-        } else if ($colors == 2) {
+        } elseif ($colors == 2) {
             return "secondary";
-        }else if ($colors == 3) {
+        } elseif ($colors == 3) {
             return "tertiary";
-        } else if ($colors == 4) {
+        } elseif ($colors == 4) {
             return "quaternary";
-        }  
-        
+        }
+
         return "neutral";
     }
 
