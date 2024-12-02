@@ -192,6 +192,7 @@ function navClasses($currentSection, $navSection) {
     </nav>
     @include("scripts", ["visual" => $visual, "section" => $section, "scripts" => [], "effectPreview" => $effectPreview])
 @if (!$preview)
+    <script async src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
     </body>
 </html>
 @endif

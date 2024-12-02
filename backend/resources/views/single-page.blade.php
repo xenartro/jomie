@@ -177,6 +177,7 @@
     </nav>
     @include("scripts", ["visual" => $visual, "section" => $section, "scripts" => ['active-nav'], "effectPreview" => $effectPreview])
 @if (!$devPreview)
+    <script async src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
     </body>
 </html>
 @endif
