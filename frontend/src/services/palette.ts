@@ -51,6 +51,7 @@ export interface NewPalette {
   id?: number;
   palette: PaletteColor[];
   balance: number;
+  random_component: number;
 }
 
 export async function createPalette(data: NewPalette) {

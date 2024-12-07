@@ -15,6 +15,7 @@ class Palette extends Base
         'palette' => ['required', 'array', 'min:1'],
         'palette.*.hue' => ['integer', 'min:0', 'max:360'],
         'palette.*.saturation' => ['integer', 'min:0', 'max:100'],
+        'random_component' => ['required', 'decimal:2'],
     ];
 
     protected $table = 'palettes';
@@ -252,6 +253,7 @@ class Palette extends Base
         }
 
         $palette->user_id = $user->id;
+        $palette->random_component = isset($data['random_component']) ? floatval($data['random_component']) : 0.5;
         $palette->save();
 
         return $palette;
