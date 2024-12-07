@@ -27,6 +27,7 @@ const CreatePaletteConfirm = () => {
         id,
         balance,
         palette: selectedPalette?.colors,
+        random_component: selectedPalette.randomComponent,
       },
       {
         onSuccess(data) {
