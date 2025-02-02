@@ -217,7 +217,10 @@ export const updateImagePreview = (
   }
 };
 
-export const updateContentSocialLinksPreview = (data: ContentLinkData[]) => {
+export const updateContentSocialLinksPreview = (
+  data: ContentLinkData[],
+  focusOnType: number | null
+) => {
   const iframe = getIframe();
   if (!iframe) {
     return;
@@ -229,6 +232,10 @@ export const updateContentSocialLinksPreview = (data: ContentLinkData[]) => {
   if (!links) {
     console.error("Links container not found");
     return;
+  }
+
+  if (!focusOnType) {
+    links.scrollIntoView();
   }
 
   links.innerHTML = "";
@@ -247,7 +254,7 @@ export const updateContentSocialLinksPreview = (data: ContentLinkData[]) => {
     if (!node) {
       return;
     }
-    node.removeAttribute("data-content");
+    node.setAttribute("data-content", `social-link-${link.type}`);
     const a = node.querySelector<HTMLAnchorElement>("a");
     if (!a) {
       return;
@@ -267,9 +274,18 @@ export const updateContentSocialLinksPreview = (data: ContentLinkData[]) => {
   });
 
   links.appendChild(toInsert);
+
+  if (focusOnType) {
+    iframe.contentDocument
+      ?.querySelector(`[data-content="social-link-${focusOnType}"]`)
+      ?.scrollIntoView();
+  }
 };
 
-export const updateContentLinksPreview = (data: ContentLinkData[]) => {
+export const updateContentLinksPreview = (
+  data: ContentLinkData[],
+  focusOnIndex: number | null
+) => {
   const iframe = getIframe();
   if (!iframe) {
     return;
@@ -281,6 +297,9 @@ export const updateContentLinksPreview = (data: ContentLinkData[]) => {
     return;
   }
 
+  if (focusOnIndex === null) {
+    links.scrollIntoView();
+  }
   links.innerHTML = "";
   const toInsert = document.createDocumentFragment();
 
@@ -330,6 +349,14 @@ export const updateContentLinksPreview = (data: ContentLinkData[]) => {
   });
 
   links.appendChild(toInsert);
+
+  if (focusOnIndex !== null) {
+    console.log(focusOnIndex);
+    iframe.contentDocument
+      ?.querySelectorAll('[data-content="links"] .link-item')
+      ?.item(focusOnIndex)
+      ?.scrollIntoView();
+  }
 };
 
 export function updatePalettePreview(paletteId: number) {

@@ -10,6 +10,7 @@ import {
   useLayoutEffect,
   FocusEvent,
   ChangeEvent,
+  useRef,
 } from "react";
 import {
   ContentLinkData,
@@ -29,17 +30,18 @@ interface Props {
 const SocialLinksForm = ({ refreshUnpublishedChanges }: Props) => {
   const [data, setData] = useState<ContentLinkData[]>([]);
   const [otherLinks, setOtherLinks] = useState<ContentLinkData[]>([]);
+  const focusRef = useRef<number | null>(null);
   const queryClient = useQueryClient();
 
   useLayoutEffect(() => {
-    updateContentSocialLinksPreview([...otherLinks, ...data]);
+    updateContentSocialLinksPreview([...data, ...otherLinks], focusRef.current);
   });
 
   const onDataLoaded = useCallback(
     (data: ContentLinkData[]) => {
       setOtherLinks(
-        data.filter((link) =>
-          SOCIAL_LINKS_TYPE.find(({ type }) => type === link.type)
+        data.filter(
+          (link) => !SOCIAL_LINKS_TYPE.find(({ type }) => type === link.type)
         )
       );
       setData(
@@ -122,7 +124,10 @@ const SocialLinksForm = ({ refreshUnpublishedChanges }: Props) => {
                           : "Phone number with code. E.g. +34600123123"
                       }
                       type="text"
-                      onChange={handleChange.bind(null, i)}
+                      onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                        focusRef.current = link.type;
+                        handleChange(i, e);
+                      }}
                       onBlur={handleSocialLinkBlur.bind(null, i)}
                     />
                   </FieldLabel>
