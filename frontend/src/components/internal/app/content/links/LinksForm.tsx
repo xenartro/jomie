@@ -5,7 +5,7 @@ import FieldLabel from "components/common/field-label/FieldLabel";
 import Form from "components/common/form/Form";
 import Input from "components/common/input/Input";
 import { DataType, handleInputChange } from "helpers/forms";
-import { useState, useCallback, useLayoutEffect } from "react";
+import { useState, useCallback, useLayoutEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import {
   ContentLinkData,
@@ -146,10 +146,11 @@ interface Props {
 
 const LinksForm = ({ refreshUnpublishedChanges }: Props) => {
   const [data, setData] = useState<ContentLinkData[]>([]);
+  const focusRef = useRef<number | null>(null);
   const queryClient = useQueryClient();
 
   useLayoutEffect(() => {
-    updateContentLinksPreview(data);
+    updateContentLinksPreview(data, focusRef.current);
   });
 
   const onDataLoaded = useCallback(
@@ -225,7 +226,10 @@ const LinksForm = ({ refreshUnpublishedChanges }: Props) => {
                 link={link}
                 key={`${link.id}-${index}`}
                 index={index}
-                onChange={handleChange}
+                onChange={(i: number, l: ContentLinkData) => {
+                  focusRef.current = i;
+                  handleChange(i, l);
+                }}
                 onRemove={handleRemove}
               />
             ) : null

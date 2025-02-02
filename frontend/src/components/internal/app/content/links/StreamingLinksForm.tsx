@@ -8,6 +8,7 @@ import {
   useState,
   useCallback,
   useLayoutEffect,
+  useRef,
   FocusEvent,
   ChangeEvent,
 } from "react";
@@ -29,17 +30,18 @@ interface Props {
 const StreamingLinksForm = ({ refreshUnpublishedChanges }: Props) => {
   const [data, setData] = useState<ContentLinkData[]>([]);
   const [otherLinks, setOtherLinks] = useState<ContentLinkData[]>([]);
+  const focusRef = useRef<number | null>(null);
   const queryClient = useQueryClient();
 
   useLayoutEffect(() => {
-    updateContentSocialLinksPreview([...otherLinks, ...data]);
+    updateContentSocialLinksPreview([...otherLinks, ...data], focusRef.current);
   });
 
   const onDataLoaded = useCallback(
     (data: ContentLinkData[]) => {
       setOtherLinks(
-        data.filter((link) =>
-          STREAMING_LINKS_TYPE.find(({ type }) => type === link.type)
+        data.filter(
+          (link) => !STREAMING_LINKS_TYPE.find(({ type }) => type === link.type)
         )
       );
       setData(
@@ -118,7 +120,10 @@ const StreamingLinksForm = ({ refreshUnpublishedChanges }: Props) => {
                         streamingLinkByType(link.type)?.name
                       } URL or user`}
                       type="text"
-                      onChange={handleChange.bind(null, i)}
+                      onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                        focusRef.current = link.type;
+                        handleChange(i, e);
+                      }}
                       onBlur={handleSocialLinkBlur.bind(null, i)}
                     />
                   </FieldLabel>

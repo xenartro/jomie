@@ -215,7 +215,7 @@ body.dark {
     &.Nav--visuals {
       .Nav__Container {
         .Logo {
-          opacity: 0;
+          display: none;
         }
         .Nav__Main {
           width: 100%;
