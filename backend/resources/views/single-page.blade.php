@@ -8,7 +8,7 @@
 
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        @include("meta", ["user" => $user])
+        @include("meta", ["user" => $user, "content" => $content])
         <style>
             html {
                 box-sizing: border-box;
