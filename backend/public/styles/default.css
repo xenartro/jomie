@@ -1,4 +1,4 @@
-:root {  
+:root {
     /* Transitions */
     --transition-in-out: all 0.5s ease-in-out;
     --transition-fast-in-out: all 0.2s ease-in-out;
@@ -17,7 +17,7 @@ body {
     font-size: var(--font-body-primary-size);
     font-family: var(--font-body-primary);
     background-color: var(--color-background);
-    color:  var( --color-text); 
+    color:  var( --color-text);
     padding: 0;
     margin: 0;
 }
@@ -32,7 +32,7 @@ h1 {
     font-size: var(--font-h1-size);
     line-height: var(--font-h1-line-height);
     margin: 0 0  var(--space-b);
-    
+
 }
 
 h2 {
@@ -41,7 +41,7 @@ h2 {
     font-size: var(--font-h2-size);
     line-height: var(--font-h2-line-height);
     margin: 0 0  var(--space-m);
-    
+
 }
 
 h3 {
@@ -91,11 +91,11 @@ nav a {
 
 nav a:hover {
     color: var(--nav-link-text-hover);
-   
+
 }
 nav a.--active {
     color: var(--nav-link-text-active);
-   
+
 }
 img {
     max-width: 100%;
@@ -141,12 +141,12 @@ img {
 }
 
 .links .links-container {
-    padding: var(--space-xxb) 0;   
-    
+    padding: var(--space-xxb) 0;
+
 
 }
 .links .links-container h2 {
- 
+
 }
 
 .links .links-list {
@@ -160,14 +160,14 @@ img {
     padding: var(--links-link-padding) ;
     border: 1px solid var(--links-link-border);
     border-radius: var(--links-link-corner);
-    
+
 }
  .links .social-link-item {
     background-color: var(--links-link-color);
     padding: var(--links-link-padding) ;
     border: 1px solid var(--links-link-border);
     border-radius: var(--links-link-corner);
-    
+
 }
 
 .links .link-item  a{
@@ -175,7 +175,7 @@ img {
     display: block;
     color: var(--links-link-color);
     font-size: var(--links-link-text-font-size);
-    line-height: var(--links-link-text-line-height); 
+    line-height: var(--links-link-text-line-height);
     text-decoration: none;
     position: relative;
     font-weight: var(--font-weight-regular);
@@ -186,7 +186,7 @@ img {
     display: block;
     color: var(--color-background);
     font-size: var(--links-link-text-font-size);
-    line-height: var(--links-link-text-line-height); 
+    line-height: var(--links-link-text-line-height);
     text-decoration: none;
     position: relative;
     font-weight: var(--font-weight-regular);
@@ -218,7 +218,7 @@ img {
     min-height: 100vh;
 }
 .posts .posts-container {
-    padding: var(--space-xxb) 0;   
+    padding: var(--space-xxb) 0;
 }
 
 .posts .post-item {
@@ -313,7 +313,7 @@ img {
         --letter-spacing-h-2: -0.01em;
         --letter-spacing-h-3: -0.005em;
         --letter-spacing-h-4: -0.0em;
-    
+
         /* Line Height */
         /* Paragraphs */
         --line-height-p: var(--sizing-x6);
@@ -325,36 +325,36 @@ img {
         --line-height-h-4: var(--line-height-p);
     }
     body {
- 
-    } 
+
+    }
     nav {
 
         bottom: var(--space-m);
         width: calc(100% - var(--space-b) - var(--space-b) );
         text-align: center;
-        
-       
+
+
     }
     nav a {
         text-transform: uppercase;
     }
 
     h1 {
-        
+
         margin: 0 0  var(--space-m);
     }
-    
+
     h2 {
-        
+
         margin: 0 0  var(--space-m);
     }
-    
+
     h3 {
-        
+
         margin: 0 0  var(--space-s);
     }
 
-    
+
     /* SINGLE PAGES BASIC */
     .center-layout {
         margin:0 auto;
@@ -365,7 +365,7 @@ img {
         padding: var(--space-m) 0;
 
     }
-    
+
 
     /* BASICS MOBILE */
     .basics {
@@ -376,7 +376,7 @@ img {
         padding: var(--space-m) var(--space-m) var(--space-xxb);
         min-width: 0;
     }
-    
+
     .basics-container .basics-primary-info {
         padding-bottom: var(--space-b);
     }
@@ -385,13 +385,13 @@ img {
         height: 50vh;
     }
     .basics h1, .basics h2 {
-        
+
         margin: 0 ;
     }
     /* LINKS MOBILE */
-    
+
     .links .links-container {
-        padding: var(--space-m) 0;   
+        padding: var(--space-m) 0;
     }
     .links .links-list {
         grid-template-columns: 1fr;
@@ -401,12 +401,12 @@ img {
     /* POSTS MOBILE */
 
     .posts .posts-container {
-        padding: var(--space-b) 0;   
+        padding: var(--space-b) 0;
     }
-    
+
     .posts .post-item {
         padding: 0 0 var(--space-b) 0 ;
-        
+
         margin-bottom: var(--space-b);
     }
 
@@ -415,5 +415,5 @@ img {
         max-height: 400px;
         margin-bottom: var(--space-m);
     }
-    
+
 }
