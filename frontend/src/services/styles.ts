@@ -39,6 +39,10 @@ export async function getLayouts(): Promise<Layout[]> {
       id: 3,
       name: "Single-page layout 2",
     },
+    {
+      id: 4,
+      name: "Old School",
+    },
   ];
   return layouts;
 }
