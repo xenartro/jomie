@@ -58,6 +58,8 @@ class VisualSetting extends Base
                 return 'single-page';
             case 3:
                 return 'single-page-2';
+            case 4:
+                return 'old-school';
             default:
                 Bugsnag::notifyException(new Exception('Invalid layout ID: ' . $layoutId));
                 return 'multi-page';
