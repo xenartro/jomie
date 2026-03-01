@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 use Laravel\Fortify\Contracts\CreatesNewUsers;
+use Exception;
 
 class CreateNewUser implements CreatesNewUsers
 {
@@ -21,6 +22,7 @@ class CreateNewUser implements CreatesNewUsers
      */
     public function create(array $input)
     {
+        throw new Exception('Jomie.io is in preview mode.');
         $rules = [
             'name' => ['required', 'string', 'max:255'],
             'email' => [

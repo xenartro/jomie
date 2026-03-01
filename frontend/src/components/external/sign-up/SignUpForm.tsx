@@ -124,7 +124,7 @@ const SignUpForm = () => {
       </CheckboxLabel>
 
       <div className="Form__Submit">
-        <Button type="submit">{t("Create account")}</Button>
+        {t("Jomie.io is in preview mode and doesn't accept new accounts at the moment.")}
       </div>
     </Form>
   );
