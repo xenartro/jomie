@@ -32,7 +32,7 @@ const AppIndex = () => {
         <h1>{t("Welcome Jomie!")}</h1>
         <TipOfTheDay />
         <p className="p">
-          {t("We’ve updated our Terms & Conditions. Please review the changes.")}
+          {t("We’ve updated our Terms and Conditions and Privacy Policy. Please review the changes.")}
         </p>
       </div>
       <div className="MainSections">
