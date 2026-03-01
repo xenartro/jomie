@@ -1,5 +1,7 @@
 # Jomie: your place in the digital world
 
+Jomie is an open source hobby project, aimed to create a simple personal website builder, with a few more features than just a link-in-bio.
+
 Requirements:
 - Composer. https://getcomposer.org/download/
 - PHP 7.4+

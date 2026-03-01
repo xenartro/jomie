@@ -1,5 +1,5 @@
 import SignUpSuccess from "./SignUpSuccess";
-import Button from "components/common/button/Button";
+//import Button from "components/common/button/Button";
 import CheckboxLabel from "components/common/checkbox-label/CheckboxLabel";
 import FieldLabel from "components/common/field-label/FieldLabel";
 import Form from "components/common/form/Form";

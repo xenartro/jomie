@@ -31,6 +31,9 @@ const AppIndex = () => {
       <div className="Hero">
         <h1>{t("Welcome Jomie!")}</h1>
         <TipOfTheDay />
+        <p className="p">
+          {t("We’ve updated our Terms & Conditions. Please review the changes.")}
+        </p>
       </div>
       <div className="MainSections">
         <div className="Content">
