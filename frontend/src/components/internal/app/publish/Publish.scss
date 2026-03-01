@@ -1,3 +1,5 @@
+@use "sass:color";
+
 .Publish__Modal {
   position: fixed;
   top: 0;
@@ -12,8 +14,8 @@
   border-radius: var(--sizing-x6);
   border: 1px solid var(--border-color);
   box-shadow: 0 0 var(--sizing-x10)
-      transparentize($color: #1a203d, $amount: 0.75),
-    0 0 var(--sizing-x) transparentize($color: #1a203d, $amount: 0.95);
+      color.adjust(#1a203d, $alpha: -0.75),
+    0 0 var(--sizing-x) color.adjust(#1a203d, $alpha: -0.95);
   .Publish__Modal__Content {
     position: relative;
     h5,
@@ -47,8 +49,8 @@
 body.dark {
   .Publish__Modal {
     box-shadow: 0 0 var(--sizing-x10)
-        transparentize($color: #cbdff1, $amount: 0.75),
-      0 0 var(--sizing-x) transparentize($color: #cbdff1, $amount: 0.95);
+        color.adjust(#cbdff1, $alpha: -0.75),
+      0 0 var(--sizing-x) color.adjust(#cbdff1, $alpha: -0.95);
   }
 }
 
