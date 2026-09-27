@@ -107,8 +107,7 @@ class Link extends Base
             'meta_description' => 'Jomie: your place in the digital world',
             'meta_image'       => '',
             'type'             => self::TYPE_LINK,
-            'category'         => self::CATEGORY_LINK,
-        ], true);
+        ], true, self::CATEGORY_LINK);
     }
 
     public static function createEmpty(User $user, int $category)
@@ -129,7 +128,7 @@ class Link extends Base
     public static function createLink(User $user, array $data, bool $published, int $category)
     {
         if (!$published && empty($data['url']) && empty($data['title'])) {
-            return self::createEmpty($user);
+            return self::createEmpty($user, $category);
         }
 
         $data['meta_description'] = $data['meta_description'] ?? '';
