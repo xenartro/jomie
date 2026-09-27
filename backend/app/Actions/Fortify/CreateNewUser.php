@@ -22,7 +22,9 @@ class CreateNewUser implements CreatesNewUsers
      */
     public function create(array $input)
     {
-        throw new Exception('Jomie.io is in preview mode.');
+        if (app()->isProduction()) {
+            throw new Exception('Jomie.io is in preview mode.');
+        }
         $rules = [
             'name' => ['required', 'string', 'max:255'],
             'email' => [
